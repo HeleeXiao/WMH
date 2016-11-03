@@ -1,0 +1,58 @@
+
+
+vilidata.js	作用以及用法说明
+
+作用：
+
+	此文件作用于全局表单验证（后台可以以调用），
+
+	目前仅支持 Input 的验证   ---type 不包含 [Select,radio,单选，复选，媒体，音乐]		-已更新至支持select验证
+	
+	支持的验证有 非空、格式、长度 、相对对比（再次输入密码）。
+
+	验证的时间为 失去焦点以及提交
+	
+用法：
+
+	绑定属性：	
+			
+				vili-reg 		= ""		, 正则属性  （可即时添加正则至regs属性）删除此属性则表示不验证正则
+				reg-msg			= "这里是正则未通过时的提示语，无此项的时候默认提示[格式不正确]"
+				vili-required 	= "false" 	, 必填验证  唯一值"false"删除此属性则表示不验证
+				vili-length		= "number"	, 长度验证  
+				trace-element   = "[trace-element-ID]"  trace-element-ID = 参照元素ID  比如这里应该验证输入的是再次输入密码，则传入首次输入密码input的id
+			]
+	
+	
+	失去焦点验证：
+			Vilidata.check($('#vili-box :input'),{times:"&"});
+	
+	
+	提交表单发起验证：
+	
+		方法一：
+			【直接提交form表单】
+			 Vilidata.check(
+				 $('#vili-box :input'),
+				 { submit:true, form:'by-form',times:'&' }
+			 )；
+		方法二：
+			【ajax提交或者验证 别的元素后提交】 
+			
+			$("#submit").on("click",function(){
+			
+                Vilidata.check($('#regForm :input'),{submit:function(){
+				
+                    if( $("#agreement").prop("checked") )
+                    {
+                        $("#regForm").submit();
+                    }else{
+                        layer.tips("您未同意服务条款以及隐私条款", $("#agreement"), {tips: 2, tipsMore: true, time: 1500});
+                        return false;
+                    }
+
+                },times:'&'});
+            });
+
+	注：#vili-box 层级应不低于form表单的盒模型。
+		

@@ -1,0 +1,90 @@
+body {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.7;
+    font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+    /*background: #f7fafc;*/
+    -webkit-font-smoothing: subpixel-antialiased;
+    width: 100%;
+}
+.desk-front{
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 300px;
+    text-align: center;
+    font-size: 13px;
+}
+.index-tab-navs{
+    margin: 30px 0 20px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+    transition: opacity .15s,color .15s;
+}
+.navs-slider{
+    color: #e53e49;
+    font-size: 20px;
+}
+.sign-flow .view .group-inputs {
+    padding: 1px 0;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+}
+/*.sign-flow .view .input-wrapper input {*/
+    /*padding: 1em .8em;*/
+    /*padding-top:1em ;*/
+    /*width: 100%;*/
+    /*/!* box-sizing: border-box; *!/*/
+/*}*/
+.input-wrapper{
+    height: 4em;
+}
+.sign-flow .view .input-wrapper input {
+    width: 226px;
+}
+.sign-flow .view .input-wrapper input {
+    margin: 0;
+    padding: 5px 10px;
+    width: 100%;
+    height: 100%;
+    background: white;
+    line-height: 19px;
+    color: #555;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    /*border-radius: 1px;*/
+    /*box-shadow: inset 0 1px 2px rgba(15,82,135,.25),0 1px 0 rgba(255,255,255,.15);*/
+}
+.sign-button {
+    display: block;
+    padding: 0;
+    width: 100%;
+    font-size: 15px;
+    line-height: 33px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    /*background: #80c3f7;*/
+    /*background: -webkit-linear-gradient(top,#80c3f7,#6bbaf8);*/
+    /*background: linear-gradient(to bottom,#80c3f7,#6bbaf8);*/
+    border: 1px solid #1D80CF;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.3),0 1px 1px rgba(50,50,50,.05);
+    outline: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.sign-flow .sign-button:focus, html.no-touchevents .sign-flow .sign-button:hover {
+    /*background: #55abed;*/
+}
+.sign-flow .sign-button {
+
+    margin-top: 2em;
+    margin-bottom: 1em;
+    background: #e53e49;
+    box-shadow: none;
+    border: 0;
+    border-radius: 3px;
+    line-height: 41px;
+    color: #fff;
+}
