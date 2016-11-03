@@ -19,6 +19,10 @@
      * 提示信息存在时长
      */
     times: 300,
+    /*
+     * 背景颜色
+     */
+    style: [2, '#c00'],
     /**
      * TODO 检查（挑选）属性
      * obj      object    Must.         检查范围
@@ -90,7 +94,7 @@
                    /* console.log($(obj[item]))*/
                     $(obj[item]).on("change", function () {
                         var p = $(this).children('option:selected').val();
-                        var index = layer.tips("请选择", p, {tips: 2, tipsMore: false, time: this.times});
+                        var index = layer.tips("请选择", p, {tips: this.style, tipsMore: false, time: this.times});
                     });
                 }
 
@@ -187,7 +191,7 @@
         {
 
             if ($(obj).val().trim() == "") {
-                var index = layer.tips('请填写', $(obj), {tips: 2, tipsMore: true, time: this.times});
+                var index = layer.tips('请填写', $(obj), {tips: this.style, tipsMore: true, time: this.times});
                 if(attr)
                 {
                     $(obj).attr('layer-index',index);
@@ -209,7 +213,7 @@
                     this.reg_error = "格式不正确";
                 }
 
-                var index = layer.tips(this.reg_error, $(obj), {tips: 2, tipsMore: true, time: this.times});
+                var index = layer.tips(this.reg_error, $(obj), {tips: this.style, tipsMore: true, time: this.times});
                 if(attr)
                 {
                     $(obj).attr('layer-index',index);
@@ -227,7 +231,7 @@
             if ($(obj).val().trim().length != $(obj).attr("vili-length"))
             {
                 var index = layer.tips(this.length_error + $(obj).attr("vili-length") + "个字符", $(obj), {
-                    tips: 2,
+                    tips: this.style,
                     tipsMore: true,
                     time: this.times
                 });
@@ -244,7 +248,7 @@
         if (typeof $(obj).attr("trace-element") !== "undefined") {
 
             if ($(obj).val() !== $("#" + $(obj).attr("trace-element")).val()) {
-                var index = layer.tips("两次输入不一致", $(obj), {tips: 2, tipsMore: true, time: this.times});
+                var index = layer.tips("两次输入不一致", $(obj), {tips: this.style, tipsMore: true, time: this.times});
                 return index;
             }
         }
@@ -264,7 +268,7 @@
                 if ($(obj[item]).attr("vili-required") !== "false") {
                     if ($(obj[item]).val() == "") {
                         var index = layer.tips("请选择", $(obj[item]), {
-                        	tips: 2,
+                        	tips: this.style,
                         	tipsMore: true, 
                         	time: this.times
                         });

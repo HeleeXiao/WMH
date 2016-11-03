@@ -34,26 +34,18 @@ class HomeController extends Controller
 
     /**
      * @name        anyLogin
-     * @DateTime:   ${DATE} ${TIME}
-     *
-     * @param       \Illuminate\Http\Request $request
-     *
+     * @DateTime   ${DATE} ${TIME}
+     * @param       \Illuminate\Http\Request $request.
      * @return      \Illuminate\Support\Facades\View
-     *
-     * @example
-     *
      * @version     1.0
-     *
-     * @author      < xiaochao@jtrips.com >
-     *
-     * @copyright   COOL@2016
+     * @author      < 18681032630@163.com >
      */
     public function anyLogin(Request $request)
     {
 
         if($request->method() == "GET")
         {
-            return view("web.login");
+            return view("web.login-register");
         }
         $this->validate($request,[
             "name"  =>  "required",
@@ -74,17 +66,11 @@ class HomeController extends Controller
 
     /**
      * @name        getLogout
-     * @DateTime:   ${DATE} ${TIME}
-     *
-     * @return      \Illuminate\Support\Facades\Redirect
-     *
-     * @example
-     *
+     * @DateTime   ${DATE} ${TIME}
+     * @param       \Illuminate\Http\Request $request.
+     * @return      \Illuminate\Support\Facades\View
      * @version     1.0
-     *
-     * @author      < xiaochao@jtrips.com >
-     *
-     * @copyright   COOL@2016
+     * @author      < 18681032630@163.com >
      */
     public function getLogout()
     {
@@ -92,23 +78,13 @@ class HomeController extends Controller
         return Redirect::to("/");
     }
 
-    /**
+    /***
      * @name        getRegister
-     * @DateTime:   ${DATE} ${TIME}
-     *
-     * @param       \Illuminate\Http\Request $request
-     *
-     * @return      \Illuminate\Support\Facades\View | \Illuminate\Http\Response
-     * @return      \Illuminate\Support\Facades\Redirect
-     * @return      \Illuminate\Http\Response
-     *
-     * @example
-     *
+     * @DateTime    ${DATE}
+     * @param       \Illuminate\Http\Request.
+     * @return      \Illuminate\Support\Facades\View
      * @version     1.0
-     *
-     * @author      < xiaochao@jtrips.com >
-     *
-     * @copyright   COOL@2016
+     * @author      < 18681032630@163.com >
      */
     public function getRegister(){
         return view("web.login-register",[
@@ -119,26 +95,24 @@ class HomeController extends Controller
 
     /**
      * @name        postRegister
-     * @DateTime:   2016-10-28 19:36:30
-     *
-     * @param       \Illuminate\Http\Request $request
-     *
-     * @return      \Illuminate\Support\Facades\Redirect
-     *
-     * @example
-     *
+     * @DateTime    ${DATE}
+     * @param       \Illuminate\Http\Request.
+     * @return      \Illuminate\Support\Facades\View
      * @version     1.0
-     *
-     * @author      < xiaochao@jtrips.com >
-     *
-     * @copyright   COOL@2016
+     * @author      < 18681032630@163.com >
      */
     public function postRegister(Request $request)
     {
         $this->validate($request,[
             "name"  =>  "required",
             "phone"  =>  "required",
+            "captcha"  =>  "required",
             "password"  =>  "required"
+        ],[
+            "name.required"=>"请务必填写名称",
+            "password.required"=>"请务必填写密码",
+            "phone.required"=>"请务必填写手机号",
+            "captcha.required"=>"请务必填写验证码",
         ]);
         dd($request->all());
     }

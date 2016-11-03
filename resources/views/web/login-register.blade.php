@@ -8,6 +8,9 @@
     <title>{{ Config::get('app.name') }} - {{ @$title  }}</title>
 @include('partials.header')
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login-register.css') }}">
+    <script src="{{ asset('/js/jquery.js?t=1476958143') }}"></script>
+    <script src="{{ asset('/layer/layer.js?v=2.4') }}"></script>
+    <script src="{{ asset('/js/common/vilidata.js') }}"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -37,7 +40,7 @@
     </div>
 
     <div class="view view-signup selected" data-za-module="SignUpForm">
-        <form class="zu-side-login-box" action="/register" id="sign-form-1" autocomplete="off" method="POST" novalidate="novalidate">
+        <form class="zu-side-login-box" action="/{{config("app.version")}}/register" id="sign-form-1" autocomplete="off" method="POST" novalidate="novalidate">
             <input type="password" hidden="">
             <input type="hidden" name="_xsrf" value="6bdf63dbe265c4e922cab1002f9a923b">
             <div class="group-inputs">
@@ -45,42 +48,65 @@
                 {{ csrf_field() }}
 
                 <div class="name input-wrapper">
-                    <input required="" value="{{old("name")}}" type="text" name="name" aria-label="" placeholder="名称">
+                    <input id="RegName" required="" value="{{old("name")}}" type="text" name="name" aria-label="" placeholder="名称">
 
                 </div>
                 @if($errors->has("name"))
-                    <div class="name input-wrapper" style="background: red">
-                        {{ $errors->first("name") }}
-                    </div>
+                    <script>
+                        layer.tips("{{ $errors->first("name") }}",$("#RegName"), {
+                            tips: [2, '#c00'],
+                            tipsMore: true
+                        });
+                    </script>
                 @endif
                 <div class="email input-wrapper">
 
-                    <input required="" type="text" value="{{old("phone")}}" class="account" name="phone" aria-label="" placeholder="手机号">
+                    <input id="RegPhone" required="" type="text" value="{{old("phone")}}" class="account" name="phone" aria-label="" placeholder="手机号">
 
                 </div>
                 @if($errors->has("phone"))
-                    <div class="name input-wrapper" style="background: red">
-                        {{ $errors->first("phone") }}
-                    </div>
+                    <script>
+                        var RgIndex = layer.tips("{{ $errors->first("phone") }}",$("#RegPhone"), {
+                            tips: [2, '#c00'],
+                            tipsMore: true
+                        });
+                    </script>
                 @endif
                 <div class="input-wrapper">
-                    <input required="" type="password" value="{{old("password")}}" name="password" aria-label="" placeholder="密码（不少于 6 位）" autocomplete="off">
+                    <input id="RegPassword" required="" type="password" value="{{old("password")}}" name="password" aria-label="" placeholder="密码（不少于 6 位）" autocomplete="off">
 
                 </div>
                 @if($errors->has("password"))
-                    <div class="name input-wrapper" style="background: red">
-                        {{ $errors->first("password") }}
-                    </div>
+                    <script>
+                        RgIndex = layer.tips("{{ $errors->first("password") }}",$("#RegPassword"), {
+                            tips: [2, '#c00'],
+                            tipsMore: true
+                        });
+                    </script>
                 @endif
-                <div class="input-wrapper">
-                    <input required="" type="text" name="text" aria-label="" placeholder="验证码" autocomplete="off">
-                </div>
-                <div class="Captcha input-wrapper" data-type="cn" data-za-module="Captcha">
-                    <div class="Captcha-imageConatiner">
-
-                        <img class="Captcha-image" alt="验证码" src="{{ captcha_src() }}" style="display: block;">
+                <div class="input-wrapper" id="RegCaptcha">
+                    <input
+                           required="" type="text"
+                           name="captcha"
+                           aria-label=""
+                           placeholder="验证码"
+                           autocomplete="off"
+                           style="width: 50%;float: left;border: none">
+                    <div class="Captcha-imageConatiner" >
+                        <img id="Captcha" class="Captcha-image"
+                             alt="验证码"
+                             src="{{ captcha_src() }}"
+                             style="display: block;width: 50%;height: 4.1em;cursor:pointer">
                     </div>
                 </div>
+                @if($errors->has("captcha"))
+                    <script>
+                        RgIndex = layer.tips("{{ $errors->first("captcha") }}",$("#RegCaptcha"), {
+                            tips: [2, '#c00'],
+                            tipsMore: true
+                        });
+                    </script>
+                @endif
 
             </div>
             <div class="button-wrapper command">
@@ -88,9 +114,19 @@
             </div>
         </form>
 
-        <p class="agreement-tip">点击「注册」按钮，即代表你同意<a href="/terms" target="_blank">《一心一易协议》</a></p>
+        <p class="agreement-tip">点击「注册」按钮，即代表你同意<a href="/terms" target="_blank">《{{config("app.name")}} 协议》</a></p>
 
     </div>
 </div>
 </body>
 </html>
+<script>
+    $("#Captcha").on("click",function(){
+       $.get("/api/captcha",function(s){
+           if(s.status == 200)
+           {
+                $("#Captcha").attr("src", s.result.src);
+           }
+       })
+    });
+</script>
