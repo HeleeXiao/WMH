@@ -38,6 +38,8 @@
     @endif
 </script>
 <script type="text/javascript" src="/js/CanvasParticles-master/canvas-particle.js"></script>
+
+@if(@$page == "register")
 <div class="desk-front sign-flow clearfix sign-flow-simple">
 
     <div class="index-tab-navs">
@@ -125,6 +127,101 @@
 
     </div>
 </div>
+@endif
+<!--BEGIN LOGIN -->
+@if(@$page == "login")
+<div class="desk-front sign-flow clearfix sign-flow-simple">
+
+    <div class="index-tab-navs">
+        <div class="navs-slider" data-active-index="0">
+            登录
+        </div>
+    </div>
+
+    <div class="view view-signup selected" data-za-module="SignUpForm">
+        <form class="zu-side-login-box" action="/{{config("app.version")}}/login" id="sign-form-1" autocomplete="off" method="POST" novalidate="novalidate">
+            <input type="password" hidden="">
+            <input type="hidden" name="_xsrf" value="6bdf63dbe265c4e922cab1002f9a923b">
+            <div class="group-inputs">
+
+                {{ csrf_field() }}
+
+                <div class="name input-wrapper">
+                    <input id="RegName" required="" value="{{old("name")}}" type="text" name="name" aria-label="" placeholder="名称、电话、邮箱">
+
+                </div>
+                @if($errors->has("name"))
+                    <script>
+                        layer.tips("{{ $errors->first("name") }}",$("#RegName"), {
+                            tips: [2, '#e53e49'],
+                            tipsMore: true
+                        });
+                    </script>
+                @endif
+
+                <div class="input-wrapper">
+                    <input id="RegPassword" required="" type="password" value="{{old("password")}}" name="password" aria-label="" placeholder="密码" autocomplete="off">
+
+                </div>
+                @if($errors->has("password"))
+                    <script>
+                        RgIndex = layer.tips("{{ $errors->first("password") }}",$("#RegPassword"), {
+                            tips: [2, '#e53e49'],
+                            tipsMore: true
+                        });
+                    </script>
+                @endif
+
+                @if(@$captcha)
+                    <div class="input-wrapper" id="RegCaptcha">
+                        <input
+                                required="" type="text"
+                                name="captcha"
+                                aria-label=""
+                                placeholder="验证码"
+                                autocomplete="off"
+                                style="width: 50%;float: left;border: none">
+                        <div class="Captcha-imageConatiner" >
+                            <img id="Captcha" class="Captcha-image"
+                                 alt="验证码"
+                                 src="{{ captcha_src() }}"
+                                 style="display: block;width: 50%;height: 4.1em;cursor:pointer">
+                        </div>
+                    </div>
+                @endif
+                @if(@$captcha)
+                    @if($errors->has("captcha"))
+                        <script>
+                            RgIndex = layer.tips("{{ $errors->first("captcha") }}",$("#RegCaptcha"), {
+                                tips: [2, '#e53e49'],
+                                tipsMore: true
+                            });
+                        </script>
+                    @endif
+                @endif
+
+                <div class="input-wrapper" style="height: 6em;">
+                    <div class="Captcha-imageConatiner" >
+                        <img class="Captcha-image"
+                             alt=""
+                             src="/images/app/login_bottom.jpg"
+                             style="display: block;width: 100%;height: 6em;">
+                    </div>
+                </div>
+
+            </div>
+            <div class="button-wrapper command">
+                <button class="sign-button submit" type="submit">登录</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+@endif
+<!--BEGEND LOGIN -->
+
+
 </body>
 </html>
 <script>

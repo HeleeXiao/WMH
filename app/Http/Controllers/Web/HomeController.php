@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -28,7 +30,7 @@ class HomeController extends Controller
             ],
         ];
         return view("web.home",[
-            "title" =>  '蒲公英',
+            "title" =>  '首页',
             "media" =>  $this->media
         ]);
     }
@@ -46,12 +48,18 @@ class HomeController extends Controller
 
         if($request->method() == "GET")
         {
-            return view("web.login-register");
+            return view("web.login-register",[
+                "page"  =>  "login",
+            ]);
         }
         $this->validate($request,[
             "name"  =>  "required",
             "password"  =>  "required"
+        ],[
+            "name.required"     =>"请务必填写名称",
+            "password.required" =>"请务必填写密码",
         ]);
+
         /*
          * POST data
          */
@@ -62,7 +70,10 @@ class HomeController extends Controller
         {
             return Redirect::intended("/");
         }
-        return back();
+        $validator = Validator::make($request->all(), []);
+        $validator->errors()->add("name","账号或密码错误");
+        $validator->errors()->add("password","账号或密码错误");
+        return back()->withErrors($validator)->withInput();
     }
 
     /**
@@ -90,6 +101,7 @@ class HomeController extends Controller
     public function getRegister(){
         return view("web.login-register",[
             "title" =>  '注册|登录',
+            "page"  =>  "register",
             "media" =>  $this->media
         ]);
     }

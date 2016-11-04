@@ -16,10 +16,10 @@
             </div>
             <div class="right-part">
                 <div class="login-nav">
-                    <a href="{{ url("/". config("app.version") ."/register#register") }}" rel="nofollow" class="register btn rbtn">
+                    <a href="{{ url("/". config("app.version") ."/register") }}" rel="nofollow" class="register btn rbtn">
                         <span class="text"> 注册</span>
                     </a>
-                    <a href="{{ url("/". config("app.version") ."/register#login") }}" rel="nofollow" class="login btn wbtn">
+                    <a href="{{ url("/". config("app.version") ."/login") }}" rel="nofollow" class="login btn wbtn">
                         <span class="text"> 登录</span>
                     </a>
                 </div>
