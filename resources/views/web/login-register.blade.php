@@ -61,7 +61,7 @@
                 @if($errors->has("name"))
                     <script>
                         layer.tips("{{ $errors->first("name") }}",$("#RegName"), {
-                            tips: [2, '#c00'],
+                            tips: [2, '#e53e49'],
                             tipsMore: true
                         });
                     </script>
@@ -74,7 +74,7 @@
                 @if($errors->has("phone"))
                     <script>
                         var RgIndex = layer.tips("{{ $errors->first("phone") }}",$("#RegPhone"), {
-                            tips: [2, '#c00'],
+                            tips: [2, '#e53e49'],
                             tipsMore: true
                         });
                     </script>
@@ -86,7 +86,7 @@
                 @if($errors->has("password"))
                     <script>
                         RgIndex = layer.tips("{{ $errors->first("password") }}",$("#RegPassword"), {
-                            tips: [2, '#c00'],
+                            tips: [2, '#e53e49'],
                             tipsMore: true
                         });
                     </script>
@@ -109,7 +109,7 @@
                 @if($errors->has("captcha"))
                     <script>
                         RgIndex = layer.tips("{{ $errors->first("captcha") }}",$("#RegCaptcha"), {
-                            tips: [2, '#c00'],
+                            tips: [2, '#e53e49'],
                             tipsMore: true
                         });
                     </script>

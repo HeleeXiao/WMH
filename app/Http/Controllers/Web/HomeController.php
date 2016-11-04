@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -104,16 +105,24 @@ class HomeController extends Controller
     public function postRegister(Request $request)
     {
         $this->validate($request,[
-            "name"  =>  "required",
-            "phone"  =>  "required",
-            "captcha"  =>  "required",
+            "name"      =>  "required|unique:users",
+            "phone"     =>  "required|unique:users",
+            "captcha"   =>  "required",
             "password"  =>  "required"
         ],[
-            "name.required"=>"请务必填写名称",
-            "password.required"=>"请务必填写密码",
-            "phone.required"=>"请务必填写手机号",
-            "captcha.required"=>"请务必填写验证码",
+            "name.required"     =>"请务必填写名称",
+            "password.required" =>"请务必填写密码",
+            "phone.required"    =>"请务必填写手机号",
+            "name.unique"       =>"该名称已经被使用",
+            "phone.unique"      =>"该号码已经被使用",
+            "captcha.required"  =>"请务必填写验证码",
         ]);
-        dd($request->all());
+
+
+        if( UserRepository::register()['status'] == 200 )
+        {
+            return redirect("/");
+        }
+        return back()->with("pageMsg","注册失败")->with("level","fail");
     }
 }

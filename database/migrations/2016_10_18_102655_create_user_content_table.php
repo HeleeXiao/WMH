@@ -12,7 +12,7 @@ class CreateUserContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_content', function (Blueprint $table) {
+        Schema::create('user_contents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->comment("用户id")->unique();
             $table->tinyInteger("sex")->comment("性别")->default(0);

@@ -14,7 +14,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("file_id")->unique()->comment("唯一编号");
+            $table->string("token")->unique()->comment("唯一编号");
             $table->tinyInteger("state")->comment("状态，默认0：正常，1废弃")->default(0);
             $table->tinyInteger("status")->comment("状态")->default(0);
             $table->tinyInteger("type")->comment("类型，默认0：书籍，1：影像")->default(0);

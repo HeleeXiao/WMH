@@ -22,7 +22,7 @@
     /*
      * 背景颜色
      */
-    style: [2, '#c00'],
+    style: [2, '#e53e49'],
     /**
      * TODO 检查（挑选）属性
      * obj      object    Must.         检查范围
