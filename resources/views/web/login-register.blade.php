@@ -29,6 +29,13 @@
         }
         CanvasParticle(config);
     }
+    @if( Session::has('pageMsg') )
+        layer.alert('{{Session::get('pageMsg')}}', {
+            icon: 5,
+            shadeClose: true,
+            title: "操作失败"
+        });
+    @endif
 </script>
 <script type="text/javascript" src="/js/CanvasParticles-master/canvas-particle.js"></script>
 <div class="desk-front sign-flow clearfix sign-flow-simple">

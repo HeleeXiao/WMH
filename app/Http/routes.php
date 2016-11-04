@@ -11,7 +11,7 @@
 |
 */
 get("/",function(){
-    return redirect("/v");
+    return redirect("/".config("app.version"));
 });
 Route::controller(config("app.version"),"Web\\HomeController");
 

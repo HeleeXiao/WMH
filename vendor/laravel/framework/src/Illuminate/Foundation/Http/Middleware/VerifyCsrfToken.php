@@ -46,11 +46,17 @@ class VerifyCsrfToken
      */
     public function handle($request, Closure $next)
     {
-        if ($this->isReading($request) || $this->shouldPassThrough($request) || $this->tokensMatch($request)) {
-            return $this->addCookieToResponse($request, $next($request));
-        }
+//        if ($this->isReading($request) || $this->shouldPassThrough($request) || $this->tokensMatch($request)) {
+//            return $this->addCookieToResponse($request, $next($request));
+//        }
+        if (!$this->isReading($request) && !$this->shouldPassThrough($request) && !$this->tokensMatch($request)) {
 
-        throw new TokenMismatchException;
+            return redirect()->intended("/".config("app.version")."/register")
+                ->with("pageMsg","页面停留时间过长，请重新操作")->with("level",5);
+        }
+        return $this->addCookieToResponse($request, $next($request));
+
+//        throw new TokenMismatchException;
     }
 
     /**
