@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 class GlobalController extends Controller
 {
     /**
+     * 获取二维码
      * @name        getCaptchaSrc
      * @DateTime    ${DATE}
      * @param       .

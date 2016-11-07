@@ -22,7 +22,11 @@ class UserRepository{
     public static function register($data = null)
     {
         try {
+            //开启事务
             DB::beginTransaction();
+            /*
+             * 判断获取参数
+             */
             if (! $data) {
                 $data = [
                     'name' => e(\Request::input("name")),
@@ -32,11 +36,20 @@ class UserRepository{
                 ];
             }
 
+            /*
+             * 用户基本信息 。有则获取，无则新增
+             */
             $user = User::firstOrCreate($data);
 
             if ($user) {
+                /*
+                 * 创建用户详细信息
+                 */
                 if (UserContent::firstOrCreate(['user_id' => $user->id])) {
                     DB::commit();
+                    /*
+                     * 侦测注册事件，激活发送信息事件
+                     */
                     Event::fire(new RegisterEvent($user));
                     return spit( $user );
                 }
@@ -47,9 +60,12 @@ class UserRepository{
             return spit( [], 20000 ,'fail' );
 
         }catch (\Exception $e){
+            /*
+             * 错误处理
+             */
             DB::rollback();
-//            return spit( [],500,appException::Handle( $e, __class__, __function__ ) );
-            return spit( [],500,$e->getMessage() );
+            return spit( [],500,appException::Handle( $e, __class__, __function__ ) );
+//            return spit( [],500,$e->getMessage() );
         }
 
     }
