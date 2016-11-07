@@ -125,23 +125,24 @@ class HomeController extends Controller
      */
     public function postRegister(Request $request)
     {
-        try {
-        $this->validate($request,[
-            "name"      =>  "required|unique:users",    // |unique:users 表示 检查users表是否存在此数据
-            "phone"     =>  "required|unique:users",    // |unique:users 表示 检查users表是否存在此数据
-            "captcha"   =>  "required",
-            "password"  =>  "required"
-        ],[
-            "name.required"     =>"请务必填写名称",
-            "password.required" =>"请务必填写密码",
-            "phone.required"    =>"请务必填写手机号",
-            "name.unique"       =>"该名称已经被使用",
-            "phone.unique"      =>"该号码已经被使用",
-            "captcha.required"  =>"请务必填写验证码",
-        ]);
-        }catch (\Exception $e) {
-            return spit( [],500,appException::Handle( $e, UserRepository::class, "register" ) );
-        }
+//        try {
+            $this->validate($request,[
+                "name"      =>  "required|unique:users",    // |unique:users 表示 检查users表是否存在此数据
+                "phone"     =>  "required|unique:users",    // |unique:users 表示 检查users表是否存在此数据
+                "captcha"   =>  "required",
+                "password"  =>  "required"
+            ],[
+                "name.required"     =>"请务必填写名称",
+                "password.required" =>"请务必填写密码",
+                "phone.required"    =>"请务必填写手机号",
+                "name.unique"       =>"该名称已经被使用",
+                "phone.unique"      =>"该号码已经被使用",
+                "captcha.required"  =>"请务必填写验证码",
+            ]);
+//        }catch (\Exception $e) {
+//            dd($e);
+//            return spit( [],500,appException::Handle( $e, UserRepository::class, "register" ) );
+//        }
 
         if( UserRepository::register()['status'] == 200 )//调用注册类
         {
