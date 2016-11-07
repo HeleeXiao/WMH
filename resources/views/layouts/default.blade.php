@@ -30,7 +30,7 @@
 <body>
 <div id="wrap">
 @include('partials.bootstrap')
-<div class="container">
+<div class="container"  onmouseover="$('.lanrenzhijia').hide()">
 @section('top')
 @show
 @include('partials.notifications')

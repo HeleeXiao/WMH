@@ -24,11 +24,14 @@ class HomeController extends Controller
     {
         $this->media = [
             'js'  =>    [
+                '/layer/layui.js',
             ],
             'css'  =>    [
                 '/css/new_index.css',
+                '/layer/skin/layui.css',
             ],
         ];
+
         return view("web.home",[
             "title" =>  '首页',
             "media" =>  $this->media

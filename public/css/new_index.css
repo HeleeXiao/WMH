@@ -747,3 +747,12 @@
 	width:300px
 }
 }
+/**{ margin:0; padding:0; list-style:none;}*/
+/*body{ font-size:12px; text-align:left; background:#F8F8F8;}*/
+
+.lanrenzhijia{ width:8em; height:auto; margin:0px auto; background:#fff; position:relative; padding:10px 0; border-radius:5px;}
+.lanrenzhijia li{ z-index:2; position:relative;}
+.lanrenzhijia li a{ color:#e53e49;height:40px; line-height:40px; border-bottom:1px solid #F8F8F8; display:block; margin:0px 15px; text-align:center; text-decoration:none;}
+.lanrenzhijia li:hover a{ color:#FF5F3E; text-decoration:none;}
+.lanrenzhijia li.on a{color:#FF5F3E;}
+.lanrenzhijia .hover{ width:8em; height:40px; position:absolute; left:5px; top:10px; background:#F8F8F8; border-left:3px solid #FF5F3E; z-index:1;}
