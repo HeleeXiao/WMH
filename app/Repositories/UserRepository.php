@@ -64,8 +64,8 @@ class UserRepository{
              * 错误处理
              */
             DB::rollback();
-            return spit( [],500,appException::Handle( $e, __class__, __function__ ) );
-//            return spit( [],500,$e->getMessage() );
+//            return spit( [],500,appException::Handle( $e, __class__, __function__ ) );
+            return spit( [],500,$e->getMessage() );
         }
 
     }
