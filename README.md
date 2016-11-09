@@ -6,8 +6,8 @@
 需要删除之前建立的数据表
 在获得代码后需要配置DB后依次执行以下命令方可允许系统 ：
 
-: composer dump-autoload
-: php artisan migrate
-: php artisan db:seed --class=DatabaseSeeder
+composer dump-autoload
+php artisan migrate
+php artisan db:seed --class=DatabaseSeeder
 
 
