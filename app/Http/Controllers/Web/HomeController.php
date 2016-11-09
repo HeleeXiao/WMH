@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Demand;
-use App\Models\Tag;
+
+use App\Exceptions\Exception as appException;
+
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-
+use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
@@ -73,6 +75,10 @@ class HomeController extends Controller
             || Auth::attempt(['phone' => e($request->input("name")), 'password' => e($request->input("password"))])
         )
         {
+            /*
+             * 激活登录事件  记录登录次数
+             */
+            Event::fire( new LoginEvent( Auth::user() ) );
             return Redirect::intended("/");
         }
         $validator = Validator::make($request->all(), []);
@@ -121,22 +127,26 @@ class HomeController extends Controller
      */
     public function postRegister(Request $request)
     {
-        $this->validate($request,[
-            "name"      =>  "required|unique:users",
-            "phone"     =>  "required|unique:users",
-            "captcha"   =>  "required",
-            "password"  =>  "required"
-        ],[
-            "name.required"     =>"请务必填写名称",
-            "password.required" =>"请务必填写密码",
-            "phone.required"    =>"请务必填写手机号",
-            "name.unique"       =>"该名称已经被使用",
-            "phone.unique"      =>"该号码已经被使用",
-            "captcha.required"  =>"请务必填写验证码",
-        ]);
+//        try {
+            $this->validate($request,[
+                "name"      =>  "required|unique:users",    // |unique:users 表示 检查users表是否存在此数据
+                "phone"     =>  "required|unique:users",    // |unique:users 表示 检查users表是否存在此数据
+                "captcha"   =>  "required",
+                "password"  =>  "required"
+            ],[
+                "name.required"     =>"请务必填写名称",
+                "password.required" =>"请务必填写密码",
+                "phone.required"    =>"请务必填写手机号",
+                "name.unique"       =>"该名称已经被使用",
+                "phone.unique"      =>"该号码已经被使用",
+                "captcha.required"  =>"请务必填写验证码",
+            ]);
+//        }catch (\Exception $e) {
+//            dd($e);
+//            return spit( [],500,appException::Handle( $e, UserRepository::class, "register" ) );
+//        }
 
-
-        if( UserRepository::register()['status'] == 200 )
+        if( UserRepository::register()['status'] == 200 )//调用注册类
         {
             return redirect("/");
         }

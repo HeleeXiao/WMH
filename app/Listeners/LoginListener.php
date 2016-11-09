@@ -2,12 +2,14 @@
 
 namespace App\Listeners;
 
-use App\Events\RegisterEvent;
+use App\Events\LoginEvent;
+use App\User;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMessageListener
+class LoginListener
 {
+
     /**
      * Create the event listener.
      *
@@ -15,31 +17,22 @@ class SendMessageListener
      */
     public function __construct()
     {
-        //
     }
 
     /**
      * Handle the event.
      *
-     * @param  RegisterEvent  $event
+     * @param  LoginEvent  $event
      * @return void
      */
-    public function handle(RegisterEvent $event)
+    public function handle(LoginEvent $event)
     {
         /*
-         * TODO 发送注册消息
+         * $event 里面包含了时间对象的属性
          */
-
-        //code
-
         /*
-         * 设置用户默认等级
+         * 对用户的登录次数递增1
          */
-        $event->user->level = 1;
-
-        /*
-         * 写入数据
-         */
-        $event->user->save();
+        $event->user->login_number = $event->user->increment("login_number");
     }
 }

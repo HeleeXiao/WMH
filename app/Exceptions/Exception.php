@@ -1,6 +1,9 @@
 <?php
 namespace App\Exceptions;
 
+/*
+ * 扩展错误处理
+ */
 class Exception  {
 
     /**
@@ -15,13 +18,26 @@ class Exception  {
         switch ($e->getCode()) {
             case 23000:
                 /**
-                 * LOG
+                 * TODO LOG
                  */
 
                 /**
                  * 信息回笼
                  */
 
+                return $class && $function
+                    ? @config("exception")[$class][$function][$e->getCode()]['message']
+                    : "" ;
+
+                break;
+            case "42S02":
+                /**
+                 * LOG
+                 */
+
+                /**
+                 * 信息回笼
+                 */
                 return $class && $function
                     ? @config("exception")[$class][$function][$e->getCode()]['message']
                     : "" ;

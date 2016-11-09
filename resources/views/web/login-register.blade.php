@@ -53,11 +53,15 @@
             <input type="password" hidden="">
             <input type="hidden" name="_xsrf" value="6bdf63dbe265c4e922cab1002f9a923b">
             <div class="group-inputs">
-
                 {{ csrf_field() }}
 
+
                 <div class="name input-wrapper">
-                    <input id="RegName" required="" value="{{old("name")}}" type="text" name="name" aria-label="" placeholder="名称">
+                    <input id="RegName"
+                           value="{{old("name")}}"
+                           type="text"
+                           name="name"
+                           placeholder="名称">
 
                 </div>
                 @if($errors->has("name"))
@@ -70,7 +74,13 @@
                 @endif
                 <div class="email input-wrapper">
 
-                    <input id="RegPhone" required="" type="text" value="{{old("phone")}}" class="account" name="phone" aria-label="" placeholder="手机号">
+                    <input id="RegPhone"
+                           type="text"
+                           value="{{old("phone")}}"
+                           class="account"
+                           name="phone"
+                           vili-reg="phone"
+                           placeholder="手机号">
 
                 </div>
                 @if($errors->has("phone"))

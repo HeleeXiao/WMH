@@ -6,14 +6,13 @@ use App\Events\Event;
 use App\Models\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-/*
- * 用户注册事件
- * 绑定Lisenter [SendMessage]
- */
-class RegisterEvent extends Event
+
+class LoginEvent extends Event
 {
     use SerializesModels;
-
+    /*
+     * 创建一个用户模型
+     */
     public $user;
     /**
      * Create a new event instance.
