@@ -304,6 +304,11 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
     );
 
     public static $classMap = array (
+        'BrowsesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BrowsesTableSeeder.php',
+        'CrateBrowseTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_08_092741_crate_browse_table.php',
+        'CrateFollowTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_08_095314_crate_follow_table.php',
+        'CrateTagUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_08_035443_crate_tag_user_table.php',
+        'CreateDemandInfoTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_09_092519_create_demand_info_table.php',
         'CreateDemandTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_18_100829_create_demand_table.php',
         'CreateDiscussTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_19_033742_create_discuss_table.php',
         'CreateFilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_27_100725_create_files_table.php',
@@ -312,9 +317,13 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         'CreateUserContentTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_18_102655_create_user_content_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'DemandsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DemandsTableSeeder.php',
+        'DiscussTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DiscussTableSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'FilesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/FilesTableSeeder.php',
+        'FollowsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/FollowsTableSeeder.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
@@ -816,8 +825,11 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
+        'TagUsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TagUsersTableSeeder.php',
+        'TagsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TagsTableSeeder.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

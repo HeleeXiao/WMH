@@ -14,12 +14,12 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("token")->unique()->comment("唯一编号");
+            $table->char("token",25)->unique()->comment("唯一编号");
             $table->tinyInteger("state")->comment("状态，默认0：正常，1废弃")->default(0);
             $table->tinyInteger("status")->comment("状态")->default(0);
             $table->tinyInteger("type")->comment("类型，默认0：书籍，1：影像")->default(0);
-            $table->string("file_name")->nullable()->comment("文件名称");
-            $table->string("file_path");
+            $table->string("name")->nullable()->comment("文件名称");
+            $table->string("path");
             $table->timestamps();
         });
     }

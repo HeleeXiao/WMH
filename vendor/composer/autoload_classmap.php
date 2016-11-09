@@ -6,6 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'BrowsesTableSeeder' => $baseDir . '/database/seeds/BrowsesTableSeeder.php',
+    'CrateBrowseTable' => $baseDir . '/database/migrations/2016_11_08_092741_crate_browse_table.php',
+    'CrateFollowTable' => $baseDir . '/database/migrations/2016_11_08_095314_crate_follow_table.php',
+    'CrateTagUserTable' => $baseDir . '/database/migrations/2016_11_08_035443_crate_tag_user_table.php',
+    'CreateDemandInfoTable' => $baseDir . '/database/migrations/2016_11_09_092519_create_demand_info_table.php',
     'CreateDemandTable' => $baseDir . '/database/migrations/2016_10_18_100829_create_demand_table.php',
     'CreateDiscussTable' => $baseDir . '/database/migrations/2016_10_19_033742_create_discuss_table.php',
     'CreateFilesTable' => $baseDir . '/database/migrations/2016_10_27_100725_create_files_table.php',
@@ -14,9 +19,13 @@ return array(
     'CreateUserContentTable' => $baseDir . '/database/migrations/2016_10_18_102655_create_user_content_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'DemandsTableSeeder' => $baseDir . '/database/seeds/DemandsTableSeeder.php',
+    'DiscussTableSeeder' => $baseDir . '/database/seeds/DiscussTableSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
+    'FilesTableSeeder' => $baseDir . '/database/seeds/FilesTableSeeder.php',
+    'FollowsTableSeeder' => $baseDir . '/database/seeds/FollowsTableSeeder.php',
     'Hamcrest\\Arrays\\IsArray' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
     'Hamcrest\\Arrays\\IsArrayContaining' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
     'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
@@ -518,6 +527,9 @@ return array(
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
+    'TagUsersTableSeeder' => $baseDir . '/database/seeds/TagUsersTableSeeder.php',
+    'TagsTableSeeder' => $baseDir . '/database/seeds/TagsTableSeeder.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
 );

@@ -43,7 +43,6 @@
 @section('bottom')
 @show
 
-<script type="text/javascript" src="{{ asset("/js/common/login-register.js") }}"></script>
 </body>
 </html>
 

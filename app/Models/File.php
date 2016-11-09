@@ -19,6 +19,6 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'token', 'state', 'status','type','file_name', 'file_path',
+        'token', 'state', 'status','type','name', 'path',
     ];
 }

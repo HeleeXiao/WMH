@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Demand;
+use App\Models\Tag;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;

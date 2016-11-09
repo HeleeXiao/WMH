@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="container" style="margin:0 auto;padding: 0 0 0 0;width: 100%;">
+    <div class="container" style="margin:0 auto;padding: 48px 0 0 0;width: 100%;">
         <div class="row clearfix" style="margin:0 auto;padding: 0 0 0 0;width: 100%">
             <div class="col-md-12 column" style="margin:0 auto;padding: 0 0 0 0;width: 100%">
                 <div class="carousel slide" id="carousel-867577">

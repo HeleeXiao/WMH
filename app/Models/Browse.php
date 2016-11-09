@@ -4,26 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Demand extends Model
+class Browse extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = "demands";
+    protected $table = "browses";
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'title', 'description','token','file_id', 'status',
-        'type', 'state', 'click',
+        'user_id', 'demand_id', 'state',
     ];
-
-    public function file()
-    {
-        return $this->hasMany(File::class,"id",'file_id');
-    }
 }

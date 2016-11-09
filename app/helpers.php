@@ -10,7 +10,7 @@ if (! function_exists('unique_code')) {
      */
     function get_token()
     {
-        return date('YmdHis') . mt_rand(100000, 999999);
+        return sha1( date('YmdHis') . mt_rand(100000, 999999) );
     }
 }
 

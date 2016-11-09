@@ -2472,7 +2472,7 @@ a.remove_activity_rec:hover,a.remove_activity_invite:hover {
 #huaban {
 	float:left;
 	margin-right:20px;
-	width:80px;
+	/*width:80px;*/
 	height:28px;
 	/* background:url(/images/app/logo.png) 0 0 no-repeat */
 }
