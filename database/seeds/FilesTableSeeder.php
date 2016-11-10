@@ -22,31 +22,54 @@ class FilesTableSeeder extends Seeder
     {
         return [
             [
-                "path" => "http://www.fzlu.com/uploads/allimg/121112/1-121112145010531.jpg" ,
+                "path"      => "/images/demand/1-121112145010531.jpg" ,
                 "token"     => get_token(),
                 "name"      => "粉丝笔记本"
             ],
             [
-                "path" => "http://www.fzlu.com/uploads/allimg/121112/1-12111214502KO.jpg" ,
+                "path"      => "/images/demand/1-12111214502KO.jpg" ,
                 "token"     => get_token(),
                 "name"      => "Jane Eyre"
             ],
             [
-                "path" => "http://www.fzlu.com/uploads/allimg/121112/1-12111214505G63.jpg" ,
+                "path"      => "/images/demand/1-12111214505G63.jpg" ,
                 "token"     => get_token(),
                 "name"      => "诗"
             ],
             [
-                "path" => "http://www.fzlu.com/uploads/allimg/121112/1-121112145134U1.jpg" ,
+                "path"      => "/images/demand/1-121112145134U1.jpg" ,
                 "token"     => get_token(),
                 "name"      => "算术"
             ],
             [
-                "path" => "http://img10.360buyimg.com/n1/jfs/t637/343/413516532/165360/151997b5/5466faefN4bba5d4b.jpg" ,
+                "path"      => "/images/demand/5466faefN4bba5d4b.jpg" ,
                 "token"     => get_token(),
                 "name"      => "四大名著"
             ],
-
+            [
+                "path"      => "/images/banner/2001.jpg",
+                "token"     => get_token(),
+                "name"      => "",
+                "type"      => 2
+            ],
+            [
+                "path"      => "/images/banner/2002.png",
+                "token"     => get_token(),
+                "name"      => "",
+                "type"      => 2
+            ],
+            [
+                "path"      => "/images/banner/2003.png",
+                "token"     => get_token(),
+                "name"      => "",
+                "type"      => 2
+            ],
+            [
+                "path"      => "/images/banner/2004.jpg",
+                "token"     => get_token(),
+                "name"      => "",
+                "type"      => 2
+            ],
         ];
     }
 }

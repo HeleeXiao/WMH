@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Exceptions\Exception as appException;
 
+use App\Models\Demand;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Events\LoginEvent;
@@ -12,7 +13,9 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
@@ -37,10 +40,17 @@ class HomeController extends Controller
         ];
 
         //TODO getRecommendedContent
-        return view("web.home",[
-            "title" =>  '首页',
-            "media" =>  $this->media
-        ]);
+        try {
+            $demands = Demand::where('state', 0)->where("status", 0)->with(["user", 'tag', "file", 'discus'])->paginate(24);
+            return view("web.home", [
+                "title" => '首页',
+                "media" => $this->media,
+                "demands" => $demands,
+                "banner" => \App\Models\File::where("type", 2)->where("state", 0)->get()
+            ]);
+        }catch (\Exception $e){
+            return view("web.login-register")->with("pageMsg",$e->getMessage())->with("level","fail");
+        }
     }
 
     /**

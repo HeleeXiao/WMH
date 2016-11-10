@@ -23,15 +23,14 @@
                     @else
                         <div id="nav_user"  onmouseover="$('.lanrenzhijia').show()">
                             <a href="/yanzhico/" class="nav-link dm-nav">
-                                <img width="26" height="26"
-                                     src="/images/user/default.jpg" >
+                                <img width="26" height="26" src="/images/user/default.jpg" >
                                 <div class="arrow"></div>
                                 <div class="num hidden">0</div>
                             </a>
                         </div>
+                        {{ Auth::user()->name }}
                     @endif
                 </div>
-
                 <div class="lanrenzhijia" style="display: none" >
                     <ul>
                         <li class="on"><a href='javascript:void(0);'>用户中心</a></li>

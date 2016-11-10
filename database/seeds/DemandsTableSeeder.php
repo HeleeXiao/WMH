@@ -29,7 +29,8 @@ class DemandsTableSeeder extends Seeder
                                     我愿意拿出来分享，此物非卖品，愿寻得中意物品一换",
                 "token"     => get_token(),
                 "file_id"   => 1,
-                "user_id"   => array_rand( $user )
+                "user_id"   => $user[array_rand( $user )],
+                "status"    => rand(0,1)
             ],
             [
                 "name"    =>  "简·爱",
@@ -42,7 +43,8 @@ class DemandsTableSeeder extends Seeder
                                     但她并没有绝望，她并没有自我摧毁，并没有在侮辱中沉沦....",
                 "token"     => get_token(),
                 "file_id"   => 2,
-                "user_id"   => array_rand( $user )
+                "user_id"   => $user[array_rand( $user )],
+                "status"    => rand(0,1)
             ],
             [
                 "name"    =>  "诗",
@@ -54,7 +56,8 @@ class DemandsTableSeeder extends Seeder
                                     但她并没有绝望，她并没有自我摧毁",
                 "token"     => get_token(),
                 "file_id"   => 3,
-                "user_id"   => array_rand( $user )
+                "user_id"   => $user[array_rand( $user )],
+                "status"    => rand(0,1)
             ],
             [
                 "name"    =>  "算数",
@@ -65,7 +68,8 @@ class DemandsTableSeeder extends Seeder
                                     这个数列从第3项开始，每一项都等于前两项之和。",
                 "token"     => get_token(),
                 "file_id"   => 4,
-                "user_id"   => array_rand( $user )
+                "user_id"   => $user[array_rand( $user )],
+                "status"    => rand(0,1)
             ],
             [
                 "name"    =>  "四大名著",
@@ -74,7 +78,8 @@ class DemandsTableSeeder extends Seeder
                                         这四部巨著。四大名著是中国文学史中的经典作品，是世界宝贵的文化遗产。",
                 "token"     => get_token(),
                 "file_id"   => 5,
-                "user_id"   => array_rand( $user )
+                "user_id"   => $user[array_rand( $user )],
+                "status"    => rand(0,1)
             ],
         ];
     }

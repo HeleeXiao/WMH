@@ -13,6 +13,9 @@
 get("/",function(){
     return redirect("/".config("app.version"));
 });
+Route::controller("s","Web\\DemandController");
+
 Route::controller(config("app.version"),"Web\\HomeController");
 
 Route::controller("api","Web\\GlobalController");
+

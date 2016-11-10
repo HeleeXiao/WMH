@@ -27,7 +27,7 @@ class Demand extends Model
      */
     public function file()
     {
-        return $this->hasMany(File::class,"id",'file_id');
+        return $this->hasOne(File::class,"id",'file_id');
     }
 
     /*
@@ -38,9 +38,20 @@ class Demand extends Model
         return $this->hasOne(User::class,"id",'user_id');
     }
 
+    /*
+     * Eloquent Tags
+     */
     public function tag()
     {
-//        return $this->hasMany(Tag::class,'id','id');
+        return $this->belongsToMany(Tag::class,"tag_demands","demand_id","tag_id");
+    }
+
+    /*
+     * Eloquent Discus
+     */
+    public function discus()
+    {
+        return $this->hasMany(Discus::class,"demand_id",'id');
     }
 
 }

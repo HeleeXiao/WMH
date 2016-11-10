@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        $this->command->info(" create Users loading ... ");
+
         $this->call(UsersTableSeeder::class);
         $this->call(FilesTableSeeder::class);
         $this->call(DemandsTableSeeder::class);

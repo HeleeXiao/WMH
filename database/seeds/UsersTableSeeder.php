@@ -11,6 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->command->info(" create Users loading ... ");
         for($i=0 ; $i<50 ; $i++)
         {
             $user = factory(\App\Models\User::class)->create();

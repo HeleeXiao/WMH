@@ -2844,7 +2844,7 @@ a.remove_activity_rec:hover,a.remove_activity_invite:hover {
 }
 .menu-bar .login-nav {
 	display:inline-block;
-	width:114px;
+	width:180px;
 	line-height:48px
 }
 .menu-bar .login-nav .register {
