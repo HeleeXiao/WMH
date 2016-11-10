@@ -17,7 +17,7 @@ class CreateDiscussTable extends Migration
             $table->integer("user_id")->comment("用户id");
             $table->integer("demand_id")->comment("商品id")->nullable()->default(0);
             $table->integer("parent_id")->comment("评论id")->nullable()->default(0);
-            $table->integer("content")->comment("内容")->nullable()->default(0);
+            $table->text("content")->comment("内容");
             $table->tinyInteger("status")->comment("系统状态.")->default(0);
             $table->tinyInteger("state")->comment("状态。0：正常；1删除；")->default(0);
             $table->tinyInteger("type")->comment("类型:0 游客评论，1 交易者评论")->default(0);

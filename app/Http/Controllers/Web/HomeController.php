@@ -36,7 +36,6 @@ class HomeController extends Controller
         ];
 
         //TODO getRecommendedContent
-
         return view("web.home",[
             "title" =>  '首页',
             "media" =>  $this->media
