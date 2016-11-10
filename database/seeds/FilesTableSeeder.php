@@ -11,6 +11,7 @@ class FilesTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->command->info(" create Files loading ... ");
         foreach ($this->default_() as $value) {
             \App\Models\File::firstOrCreate($value);
         }

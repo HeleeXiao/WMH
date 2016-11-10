@@ -11,6 +11,7 @@ class DemandsTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->command->info(" create Demands loading ... ");
         for($i = 0 ; $i < 21; $i++){
             foreach ($this->default_() as $value) {
                 \App\Models\Demand::firstOrCreate($value);

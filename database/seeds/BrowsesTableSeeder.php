@@ -11,6 +11,7 @@ class BrowsesTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->command->info(" create Browses loading ... ");
         $this->default_();
     }
 

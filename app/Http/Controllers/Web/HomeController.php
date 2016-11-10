@@ -7,7 +7,6 @@ use App\Exceptions\Exception as appException;
 
 use App\Models\User;
 use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
 use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -35,6 +34,8 @@ class HomeController extends Controller
                 '/layer/skin/layui.css',
             ],
         ];
+
+        //TODO getRecommendedContent
 
         return view("web.home",[
             "title" =>  '首页',
@@ -151,5 +152,18 @@ class HomeController extends Controller
             return redirect("/");
         }
         return back()->with("pageMsg","注册失败")->with("level","fail");
+    }
+
+    /**
+     * @name        getSearch
+     * @DateTime    ${DATE}
+     * @param       \Illuminate\Http\Request.
+     * @return      \Illuminate\Support\Facades\View
+     * @version     1.0
+     * @author      < 18681032630@163.com >
+     */
+    public function getSearch()
+    {
+        dd(\Request::input("q"));
     }
 }

@@ -11,6 +11,7 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->command->info(" create Tags loading ... ");
         $this->default_();
     }
 

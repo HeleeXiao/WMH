@@ -10,6 +10,7 @@ class DiscussTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->command->info(" create Discuss loading ... ");
         $this->default_();
         $this->default_(1);
     }

@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0 ; $i<51 ; $i++)
+        for($i=0 ; $i<50 ; $i++)
         {
             $user = factory(\App\Models\User::class)->create();
             \App\Models\UserContent::firstOrCreate(['user_id' => $user->id]);

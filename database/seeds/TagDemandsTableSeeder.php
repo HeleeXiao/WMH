@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TagUsersTableSeeder extends Seeder
+class TagDemandsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,20 +11,20 @@ class TagUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->command->info(" create TagUsers loading ... ");
+        $this->command->info(" create TagDemand loading ... ");
         $this->default_();
     }
 
     protected function default_()
     {
-        $users = \App\Models\User::where("state",0)->get()->pluck("id");
+        $demands = \App\Models\Demand::where("state",0)->get()->pluck("id");
         $tags  = \App\Models\Tag::where("state",0)->get()->pluck("id");
-        foreach ($users as $id) {
+        foreach ($demands as $id) {
             $tagA = array_rand($tags->toArray(),6);
             foreach ($tagA as $tag_id) {
-                \App\Models\TagUser::firstOrCreate([
-                    "user_id"   => $id,
-                    "tag_id"    => $tag_id,
+                \App\Models\TagDemand::firstOrCreate([
+                    "demand_id"     => $id,
+                    "tag_id"        => $tag_id,
                 ]);
             }
         }

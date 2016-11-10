@@ -11,6 +11,7 @@ class FollowsTableSeeder extends Seeder
      */
     public function run()
     {
+        $this->command->info(" create Follows loading ... ");
         $this->default_();
     }
 
