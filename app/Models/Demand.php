@@ -22,10 +22,25 @@ class Demand extends Model
         'type', 'state', 'click',
     ];
 
+    /*
+     * Eloquent Files
+     */
     public function file()
     {
         return $this->hasMany(File::class,"id",'file_id');
     }
 
+    /*
+     * Eloquent Users
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class,"id",'user_id');
+    }
+
+    public function tag()
+    {
+//        return $this->hasMany(Tag::class,'id','id');
+    }
 
 }

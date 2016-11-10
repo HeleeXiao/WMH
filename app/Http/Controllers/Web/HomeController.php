@@ -10,6 +10,7 @@ use App\Repositories\UserRepository;
 use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -52,7 +53,6 @@ class HomeController extends Controller
      */
     public function anyLogin(Request $request)
     {
-
         if($request->method() == "GET")
         {
             return view("web.login-register",[
