@@ -14,10 +14,10 @@
             <div class="right-part">
                 <div class="login-nav">
                     @if( ! Auth::check())
-                        <a href="{{ url("/". config("app.version") ."/register") }}" rel="nofollow" class="register btn rbtn">
+                        <a href="{{ url("/". config("app.version") ."register") }}" rel="nofollow" class="register btn rbtn">
                             <span class="text"> 注册</span>
                         </a>
-                        <a href="{{ url("/". config("app.version") ."/login") }}" rel="nofollow" class="login btn wbtn">
+                        <a href="{{ url("/". config("app.version") ."login") }}" rel="nofollow" class="login btn wbtn">
                             <span class="text"> 登录</span>
                         </a>
                     @else
@@ -36,13 +36,13 @@
                         <li class="on"><a href='javascript:void(0);'>用户中心</a></li>
                         <li><a href='javascript:void(0);'>账号设置</a></li>
                         <li><a href='javascript:void(0);'>我关注的</a></li>
-                        <li><a href='{{ url("/". config("app.version") ."/logout") }}'>退出</a></li>
+                        <li><a href='{{ url("/". config("app.version") ."logout") }}'>退出</a></li>
                     </ul>
                     <div class="hover"></div>
                 </div>
 
             </div>
-            <form id="search_form" method="get" action="/{{ config("app.version") }}/search/" class="searching-unit" data-regestered="regestered">
+            <form id="search_form" method="get" action="/{{ config("app.version") }}search/" class="searching-unit" data-regestered="regestered">
                 <input id="query" type="text" size="27" name="q" autocomplete="off" placeholder="搜索你喜欢的" value="">
                 <a href="#" onclick="return false;" class="go"></a>
             </form>

@@ -44,12 +44,15 @@
 
     <div class="index-tab-navs">
         <div class="navs-slider" data-active-index="0">
-            注册
+            <a href="javascript:void(0);">注册</a>
+            &nbsp;|&nbsp;
+            <a class="no-active" href="{{ url("/". config("app.version") ."login") }}">登录</a>
         </div>
+
     </div>
 
     <div class="view view-signup selected" data-za-module="SignUpForm">
-        <form class="zu-side-login-box" action="/{{config("app.version")}}/register" id="sign-form-1" autocomplete="off" method="POST" novalidate="novalidate">
+        <form class="zu-side-login-box" action="/{{config("app.version")}}register" id="sign-form-1" autocomplete="off" method="POST" novalidate="novalidate">
             <input type="password" hidden="">
             <input type="hidden" name="_xsrf" value="6bdf63dbe265c4e922cab1002f9a923b">
             <div class="group-inputs">
@@ -144,12 +147,14 @@
 
     <div class="index-tab-navs">
         <div class="navs-slider" data-active-index="0">
-            登录
+            <a class="no-active" href="{{ url("/". config("app.version") ."register") }}">注册</a>
+            &nbsp;|&nbsp;
+            <a href="javascript:void(0);">登录</a>
         </div>
     </div>
 
     <div class="view view-signup selected" data-za-module="SignUpForm">
-        <form class="zu-side-login-box" action="/{{config("app.version")}}/login" id="sign-form-1" autocomplete="off" method="POST" novalidate="novalidate">
+        <form class="zu-side-login-box" action="/{{config("app.version")}}login" id="sign-form-1" autocomplete="off" method="POST" novalidate="novalidate">
             <input type="password" hidden="">
             <input type="hidden" name="_xsrf" value="6bdf63dbe265c4e922cab1002f9a923b">
             <div class="group-inputs">
@@ -170,7 +175,7 @@
                 @endif
 
                 <div class="input-wrapper">
-                    <input id="RegPassword" required="" type="password" value="{{old("password")}}" name="password" aria-label="" placeholder="密码" autocomplete="off">
+                    <input style="border: none" id="RegPassword" required="" type="password" value="{{old("password")}}" name="password" aria-label="" placeholder="密码" autocomplete="off">
 
                 </div>
                 @if($errors->has("password"))
@@ -210,18 +215,24 @@
                     @endif
                 @endif
 
-                <div class="input-wrapper" style="height: 6em;">
-                    <div class="Captcha-imageConatiner" >
-                        <img class="Captcha-image"
-                             alt=""
-                             src="/images/app/login_bottom.jpg"
-                             style="display: block;width: 100%;height: 6em;">
-                    </div>
-                </div>
+                {{--<div class="input-wrapper" style="height: 6em;">--}}
+                    {{--<div class="Captcha-imageConatiner" >--}}
+                        {{--<img class="Captcha-image"--}}
+                             {{--alt=""--}}
+                             {{--src="/images/app/login_bottom.jpg"--}}
+                             {{--style="display: block;width: 100%;height: 6em;">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
             </div>
             <div class="button-wrapper command">
                 <button class="sign-button submit" type="submit">登录</button>
+            </div>
+            <div class="signin-misc-wrapper clearfix">
+                <label class="remember-me">
+                    <input type="checkbox" name="remember_me" checked="" value="true"> 记住我
+                </label>
+                <a class="unable-login" href="#">无法登录?</a>
             </div>
         </form>
 

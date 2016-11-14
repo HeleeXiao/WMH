@@ -12,12 +12,17 @@ use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\PaginationServiceProvider;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use Psy\VarDumper\Presenter;
+use TomLingham\Searchy\Facades\Searchy;
 
 class HomeController extends Controller
 {
@@ -39,9 +44,11 @@ class HomeController extends Controller
             ],
         ];
 
-        // getRecommendedContent
+        //TODO getRecommendedContent
         try {
-            $demands = Demand::where('state', 0)->where("status", 0)->with(["user", 'tag', "file", 'discus'])->paginate(24);
+            $demands = Demand::where('state', 0)->where("status", 0)
+                ->with(["user", 'tag', "file", 'discus'])->paginate(24);
+
             return view("web.home", [
                 "title" => '首页',
                 "media" => $this->media,
@@ -49,7 +56,6 @@ class HomeController extends Controller
                 "banner" => \App\Models\File::where("type", 2)->where("state", 0)->get()
             ]);
         }catch (\Exception $e){
-
             return view("web.login-register")->with("pageMsg",$e->getMessage())->with("level","fail");
         }
     }
@@ -156,9 +162,10 @@ class HomeController extends Controller
 //            dd($e);
 //            return spit( [],500,appException::Handle( $e, UserRepository::class, "register" ) );
 //        }
-
-        if( UserRepository::register()['status'] == 200 )//调用注册类
+        $spit = UserRepository::register();
+        if( $spit['status'] == 200 )//调用注册类
         {
+            Auth::loginUsingId($spit['result']->id);
             return redirect("/");
         }
         return back()->with("pageMsg","注册失败")->with("level","fail");
@@ -172,8 +179,15 @@ class HomeController extends Controller
      * @version     1.0
      * @author      < 18681032630@163.com >
      */
-    public function getSearch()
+    public function getSearch(Request $request)
     {
-        dd(\Request::input("q"));
+        $searchUsers =  Searchy::users("name","email")->query(e($request->input("q")))
+            ->getQuery()->having("state","=",0)->get();
+        $pagedata = collect( $searchUsers )->toArray();
+        $pagesize=10;
+        $pageout=array_slice($pagedata, (e($request->input('page'))-1)*$pagesize,$pagesize);
+        $paginator = new Paginator($pagedata,$pagesize);
+        dd($paginator);
+
     }
 }

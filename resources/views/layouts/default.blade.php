@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <link rel="shortcut icon" href="/images/app/{{ Config::get('app.icon') }}" type="image/x-icon">
 <link rel="icon" href="/images/app/{{ Config::get('app.icon') }}" type="image/x-icon">
-<title>{{ Config::get('app.name') }} - {{ @$title  }}</title>
+<title>{{ @$title  }} - {{ Config::get('app.name') }}</title>
 @include('partials.header')
     <script>
         /* *

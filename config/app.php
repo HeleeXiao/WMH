@@ -4,7 +4,7 @@ return [
 
     "name"  =>  "我们换",
     "icon"  =>  "icon.ico",
-    "version"   =>  "v1.0",
+    "version"   =>  "v1.0/",
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -148,6 +148,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Mews\Captcha\CaptchaServiceProvider::class,
+        TomLingham\Searchy\SearchyServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -199,6 +201,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

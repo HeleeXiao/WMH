@@ -17,7 +17,12 @@ class DemandController extends Controller
      */
     public function getShow($id)
     {
-        dd(Demand::where('id',e($id))->with(["user", 'tag', "file", 'discus'])->get()->toArray());
+        $demand = Demand::where('id',e($id))->with(["user", 'tag', "file", 'discus'])->first();
+
+        return view("web.demand.info",[
+           "title"  => $demand->title,
+           "demand"  => $demand,
+        ]);
     }
 
 

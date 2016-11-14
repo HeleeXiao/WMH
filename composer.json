@@ -8,7 +8,9 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "mews/captcha": "^2.1",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "tom-lingham/searchy" : "2.*",
+        "barryvdh/laravel-debugbar": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -11,14 +11,15 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '5e8fe2a5ffaded85af682684fe3bbf5a' => __DIR__ . '/..' . '/mews/captcha/src/helpers.php',
+        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
@@ -34,6 +35,10 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+        ),
+        'T' => 
+        array (
+            'TomLingham\\Searchy\\' => 19,
         ),
         'S' => 
         array (
@@ -88,11 +93,16 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+            'DebugBar\\' => 9,
         ),
         'C' => 
         array (
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
+        ),
+        'B' => 
+        array (
+            'Barryvdh\\Debugbar\\' => 18,
         ),
         'A' => 
         array (
@@ -114,6 +124,10 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'TomLingham\\Searchy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tom-lingham/searchy/src',
         ),
         'Symfony\\Polyfill\\Util\\' => 
         array (
@@ -235,6 +249,10 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'DebugBar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
+        ),
         'ClassPreloader\\' => 
         array (
             0 => __DIR__ . '/..' . '/classpreloader/classpreloader/src',
@@ -242,6 +260,10 @@ class ComposerStaticInite076afe45cb086ab2da8c82077e278c9
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Barryvdh\\Debugbar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src',
         ),
         'App\\' => 
         array (

@@ -21,9 +21,17 @@ body {
     line-height: 1;
     transition: opacity .15s,color .15s;
 }
-.navs-slider{
+.navs-slider,.navs-slider a{
     color: #e53e49;
     font-size: 20px;
+    text-decoration: none;
+}
+.navs-slider .no-active{
+    color: #b3b5b7;
+
+}
+.no-active:hover{
+    color: #4e4d52
 }
 .sign-flow .view .group-inputs {
     padding: 1px 0;

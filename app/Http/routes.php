@@ -15,7 +15,7 @@ get("/",function(){
 });
 Route::controller("s","Web\\DemandController");
 
-Route::controller(config("app.version"),"Web\\HomeController");
+Route::controller(substr(config("app.version"),0,strpos(config("app.version"),"/")),"Web\\HomeController");
 
 Route::controller("api","Web\\GlobalController");
 
