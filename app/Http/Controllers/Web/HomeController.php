@@ -39,7 +39,7 @@ class HomeController extends Controller
             ],
         ];
 
-        //TODO getRecommendedContent
+        // getRecommendedContent
         try {
             $demands = Demand::where('state', 0)->where("status", 0)->with(["user", 'tag', "file", 'discus'])->paginate(24);
             return view("web.home", [
@@ -49,6 +49,7 @@ class HomeController extends Controller
                 "banner" => \App\Models\File::where("type", 2)->where("state", 0)->get()
             ]);
         }catch (\Exception $e){
+
             return view("web.login-register")->with("pageMsg",$e->getMessage())->with("level","fail");
         }
     }
