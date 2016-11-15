@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrateTagUserTable extends Migration
+class CreateFileDemandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CrateTagUserTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('tag_users')) {
-            Schema::create('tag_users', function (Blueprint $table) {
-                $table->increments("id")->comment("用户与标签关系 id");
-                $table->tinyInteger("user_id")->comment("用户id");
-                $table->tinyInteger("tag_id")->comment("标签id");
+        if (!Schema::hasTable('file_demands')) {
+            Schema::create('file_demands', function (Blueprint $table) {
+                $table->increments("id")->comment("商品与图片文件关系 id");
+                $table->tinyInteger("demand_id")->comment("商品id");
+                $table->tinyInteger("file_id")->comment("文件id");
                 $table->tinyInteger("state")->comment("状态，默认0：正常，1废弃")->default(0);
                 $table->timestamps();
             });
@@ -30,6 +30,6 @@ class CrateTagUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tag_users');
+        Schema::drop('file_demands');
     }
 }

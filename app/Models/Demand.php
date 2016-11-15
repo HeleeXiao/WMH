@@ -23,9 +23,10 @@ class Demand extends Model
     ];
 
     /*
-     * Eloquent Files
+     * 封面
+     * Eloquent cover
      */
-    public function file()
+    public function cover()
     {
         return $this->hasOne(File::class,"id",'file_id');
     }
@@ -46,6 +47,13 @@ class Demand extends Model
         return $this->belongsToMany(Tag::class,"tag_demands","demand_id","tag_id");
     }
 
+    /*
+     * Eloquent file
+     */
+    public function file()
+    {
+        return $this->belongsToMany(File::class,"file_demands","demand_id","file_id");
+    }
     /*
      * Eloquent Discus
      */
