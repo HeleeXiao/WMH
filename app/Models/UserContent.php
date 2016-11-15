@@ -22,6 +22,14 @@ class UserContent extends Model
         'province', 'city', 'education','major',
     ];
 
+    /**
+     * @name        head
+     * @DateTime    ${DATE}
+     * @param
+     * @return      \Eloquent
+     * @version     1.0
+     * @author      < 18681032630@163.com >
+     */
     public function head()
     {
         return $this->hasOne(File::class,'id','file_id');

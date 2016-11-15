@@ -31,8 +31,14 @@
                 <span class="name">{{ $demand->user->name }}</span>
             </a>
             <div class="album-action dib">
-                <a title="收藏" class="albumcollectbtn" href="javascript:;" data-collect="{&quot;id&quot;:&quot;81183780&quot;,&quot;favorite_id&quot;:&quot;0&quot;}"><i></i><span>收藏</span></a>
-                <a title="赞" class="albumlikebtn " data-albumlike="{&quot;id&quot;:&quot;81183780&quot;,&quot;like_id&quot;:&quot;0&quot;}" href="javascript:;"><i></i><span>赞</span></a>
+                <a title="收藏" class="albumcollectbtn" href="javascript:;" >
+                    <i></i>
+                    <span>收藏</span>
+                </a>
+                <a title="赞" class="albumlikebtn " href="javascript:;">
+                    <i></i>
+                    <span>赞</span>
+                </a>
                 <div id="album-share" class="album-share" href="javascript:;">
                     <i></i>
                 </div>

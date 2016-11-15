@@ -22,7 +22,10 @@ class DemandController extends Controller
                 $content->with("head");
             }]);
         }, 'tag', "file", 'discus'])->first();
-
+        if( !$demand )
+        {
+            abort("404",'没有找到该商品');
+        }
         return view("web.demand.info",[
             "title"   => $demand->title,
             "demand"  => $demand,
