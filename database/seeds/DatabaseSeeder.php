@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call(UsersTableSeeder::class);
         $this->call(FilesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
         $this->call(DemandsTableSeeder::class);
         $this->call(BrowsesTableSeeder::class);
         $this->call(TagsTableSeeder::class);
@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TagUsersTableSeeder::class);
         $this->call(FollowsTableSeeder::class);
         $this->call(TagDemandsTableSeeder::class);
+        $this->call(FileDemandsTableSeeder::class);
 
         Model::reguard();
     }

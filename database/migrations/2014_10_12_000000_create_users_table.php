@@ -12,18 +12,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id')->comment("用户id");
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone')->unique();
-            $table->string('password', 60);
-            $table->integer('login_number')->comment("登陆次数：默认0")->default(0);
-            $table->tinyInteger("state")->comment("状态，默认0：正常；1废除")->default(0);
-            $table->tinyInteger("level")->comment("等级，默认0：普通；1：一般会员")->default(0);
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        if ( ! Schema::hasTable('users')) {
+            Schema::create('users', function (Blueprint $table) {
+                $table->increments('id')->comment("用户id");
+                $table->string('name');
+                $table->string('email');
+                $table->string('phone')->unique();
+                $table->string('password', 60);
+                $table->integer('login_number')->comment("登陆次数：默认0")->default(0);
+                $table->tinyInteger("state")->comment("状态，默认0：正常；1废除")->default(0);
+                $table->tinyInteger("level")->comment("等级，默认0：普通；1：一般会员")->default(0);
+                $table->rememberToken();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -33,6 +35,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        if ( Schema::hasTable('users')) {
+            Schema::drop('users');
+        }
     }
 }

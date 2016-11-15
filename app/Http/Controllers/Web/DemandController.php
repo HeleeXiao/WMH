@@ -21,7 +21,7 @@ class DemandController extends Controller
             $user->with(["content"=>function($content){
                 $content->with("head");
             }]);
-        }, 'tag', "file", 'discus'])->first();
+        }, 'tag', "cover", 'discus',"file"])->first();
         if( !$demand )
         {
             abort("404",'没有找到该商品');
