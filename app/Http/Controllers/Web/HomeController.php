@@ -47,7 +47,7 @@ class HomeController extends Controller
         //TODO getRecommendedContent
         try {
             $demands = Demand::where('state', 0)->where("status", 0)
-                ->with(["user", 'tag', "file", 'discus'])->paginate(24);
+                ->with(["user", 'tag', "cover", 'discus'])->paginate(24);
 
             return view("web.home", [
                 "title" => '首页',

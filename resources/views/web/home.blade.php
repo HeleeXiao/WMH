@@ -48,7 +48,7 @@
                     <div class="recommend-hidebox pl-right">
                     <div class="recommend-imgbox recommend-box">
                         <a href="{{url("s/show/".$demand->id)}}">
-                            <img src="{{url($demand->file->path)}}"
+                            <img src="{{url($demand->cover->path)}}"
                                  data-baiduimageplus-ignore="1">
                         </a>
                     </div>
@@ -122,7 +122,7 @@
                 @elseif( ABS(( $key+1) % 3 ) == 0 )
                     <div class="recommend-imgbox recommend-box">
                     <a href="{{url("s/show/".$demand->id)}}">
-                        <img src="{{url($demand->file->path)}}"
+                        <img src="{{url($demand->cover->path)}}"
                              data-baiduimageplus-ignore="1">
                     </a>
                 </div>
