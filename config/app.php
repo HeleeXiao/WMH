@@ -150,6 +150,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         TomLingham\Searchy\SearchyServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -200,9 +201,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Captcha' => Mews\Captcha\Facades\Captcha::class,
-        'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Captcha'   => Mews\Captcha\Facades\Captcha::class,
+        'Searchy'   => TomLingham\Searchy\Facades\Searchy::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+        'Form'      => Illuminate\Html\FormFacade::class,
+        'HTML'      => Illuminate\Html\HtmlFacade::class
     ],
 
 ];

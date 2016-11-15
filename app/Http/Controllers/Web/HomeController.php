@@ -144,6 +144,7 @@ class HomeController extends Controller
      */
     public function postRegister(Request $request)
     {
+
 //        try {
             $this->validate($request,[
                 "name"      =>  "required|unique:users",    // |unique:users 表示 检查users表是否存在此数据
@@ -187,7 +188,6 @@ class HomeController extends Controller
         $pagesize=10;
         $pageout=array_slice($pagedata, (e($request->input('page'))-1)*$pagesize,$pagesize);
         $paginator = new Paginator($pagedata,$pagesize);
-        dd($paginator);
-
+        dump($paginator);
     }
 }
