@@ -8,7 +8,7 @@
 @section('content')
 <div class="container" style="margin:0 auto;padding: 48px 0 0 0;width: 100%;">
     <div class="album-header">
-        <img class="album-header-bg ohmyblured" src="http://img5.duitang.com/uploads/item/201611/08/20161108105946_nxsJL.thumb.1200_280_g.jpeg" height="280">
+        <img class="album-header-bg ohmyblured" src="/images/banner/20161108105946_nxsJL.thumb.1200_280_g.jpeg" height="280">
         <div class="album-header-bg-mask"></div>
         <table class="album-header-info tc">
             <tbody>

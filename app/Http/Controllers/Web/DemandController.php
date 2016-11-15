@@ -22,7 +22,7 @@ class DemandController extends Controller
                 $content->with("head");
             }]);
         }, 'tag', "file", 'discus'])->first();
-        
+
         return view("web.demand.info",[
             "title"   => $demand->title,
             "demand"  => $demand,
