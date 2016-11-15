@@ -17,7 +17,7 @@
                     <h1 class="album-title">{{ $demand->title }}</h1>
                     <p class="album-info">
                         <span class="album-count">{{ $demand->file->count() }}张图片</span>
-                        &nbsp;<b>·</b>&nbsp;<span class="like-count"><i>10</i>人关注</span></p>
+                        &nbsp;<b>·</b>&nbsp;<span class="like-count"><i>{{ $demand->follow->count() }}</i>人关注</span></p>
                     <p class="album-desc">
                     </p>
                 </td>
@@ -26,7 +26,7 @@
         </table>
         <div class="album-header-attr-mask"></div>
         <div class="album-header-attr tc">
-            <a target="_blank" class="album-account" href="/people/?user_id=155429">
+            <a target="_blank" class="album-account" href="{{url("u/?u=".$demand->user->id)}}">
                 <img class="avatar" src="{{ url($demand->user->content->head->path) }}">
                 <span class="name">{{ $demand->user->name }}</span>
             </a>

@@ -62,4 +62,12 @@ class Demand extends Model
         return $this->hasMany(Discus::class,"demand_id",'id');
     }
 
+    /*
+     * Eloquent follows
+     */
+    public function follow()
+    {
+        return $this->hasMany(Follow::class,"demand_id",'id');
+    }
+
 }
