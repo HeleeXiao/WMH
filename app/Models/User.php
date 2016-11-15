@@ -46,4 +46,9 @@ class User extends Model implements AuthenticatableContract,
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function content()
+    {
+        return $this->hasOne(UserContent::class,"user_id");
+    }
 }

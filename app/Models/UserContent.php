@@ -21,4 +21,9 @@ class UserContent extends Model
         'user_id', 'sex', 'age','country','address', 'state',
         'province', 'city', 'education','major',
     ];
+
+    public function head()
+    {
+        return $this->hasOne(File::class,'id','file_id');
+    }
 }

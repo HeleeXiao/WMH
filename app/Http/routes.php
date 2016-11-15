@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//Blade::setRawTags('{{', '}}');
 get("/",function(){
     return redirect("/".config("app.version"));
 });
