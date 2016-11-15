@@ -15,7 +15,8 @@ php artisan migrate
 php artisan db:seed --class=DatabaseSeeder
 
 
-update:2016-11-15 20:27:52 执行以下命令
+# Update :   2016-11-15 20:00
+执行以下命令
 
 
 php artisan migrate:refresh
