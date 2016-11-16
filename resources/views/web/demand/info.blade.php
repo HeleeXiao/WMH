@@ -25,7 +25,7 @@
         text-align: center;
         font-size: 18px;
         background: #fff;
-        width: 28%;
+        width: 28% ;
         /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
@@ -132,6 +132,15 @@
                 <span class="name">{{ $demand->user->name }}</span>
             </a>
             <span class="album-title">{{ $demand->title }} </span>
+            <div class="album-incoun">
+                <p class="album-info">
+                  <span class="album-count"> {{ $demand->file->count() }}张图片 </span>
+                  &nbsp;<b>·</b>&nbsp;
+                  <span class="like-count"><i>10</i>人关注</span>
+                </p>
+
+            </div>
+
             <div class="album-action dib">
                 <a title="收藏" class="albumcollectbtn" href="javascript:;" ><i></i><span>收藏</span></a>
                 <a title="赞" class="albumlikebtn "  href="javascript:;"><i></i><span>赞</span></a>

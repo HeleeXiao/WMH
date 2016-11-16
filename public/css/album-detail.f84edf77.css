@@ -1453,6 +1453,13 @@ img.album-header-bg {
 	max-height: 66px
 }
 
+.album-incoun .album-info{
+	float: left;
+	height: 72px;
+	line-height: 72px;
+	color: #fff;
+	margin-left: 20px;
+	}
 .album-header-info .album-info {
 	margin-top: 5px;
 	margin-bottom: 16px
