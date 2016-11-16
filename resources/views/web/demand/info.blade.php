@@ -61,7 +61,7 @@
     </style>
    <script>
    $(function(){
-         var appendNumber = 6;
+          var appendNumber = 6;
           var prependNumber = 1;
           var swiper = new Swiper('.swiper-container', {
               pagination: '.swiper-pagination',
@@ -73,13 +73,15 @@
               spaceBetween: 30,
               loop:true,
               speed:500,
-              autoplay:1000
+              autoplay:3000
           });
+           layer.photos({
+               photos: '#layer-p',shift: 5
+           });
    })
 </script>
 @stop
 @section('content')
-
 <div class="container" style="margin:0 auto;padding: 48px 0 0 0;width: 100%;">
     <div class="album-header">
         <img class="album-header-bg ohmyblured" src="{{url("/images/banner/20161108105946_nxsJL.thumb.1200_280_g.jpeg")}}" height="280">
@@ -87,26 +89,28 @@
         <table class="album-header-info tc">
             <tbody>
             <tr>
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-    @foreach( $demand->file as $file )
-        <div class="swiper-slide"><img src="{{ $file->path }}" width="100%" height="185"></div>
-    @endforeach
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
-    <td>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper" id="layer-p">
+                    @foreach( $demand->file as $fk=>$file )
+                        <div class="swiper-slide"><img layer-pid="{{$fk+1}}"
+                           layer-src="{{ $file->path }}"
+                           src="{{ $file->path }}" width="100%" height="185"></div>
+                    @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <td>
 
-        <p class="album-info">
-            <span class="album-count"> {{ $demand->file->count() }}张图片 </span>
-            &nbsp;<b>·</b>&nbsp;
-            <span class="like-count"><i>10</i>人关注</span>
-        </p>
-        <p class="album-desc"></p>
-    </td>
-    </tr>
+                    <p class="album-info">
+                        <span class="album-count"> {{ $demand->file->count() }}张图片 </span>
+                        &nbsp;<b>·</b>&nbsp;
+                        <span class="like-count"><i>10</i>人关注</span>
+                    </p>
+                    <p class="album-desc"></p>
+                </td>
+            </tr>
 
     <!--             <td>
         <h1 class="album-title">{{ $demand->title }}</h1>
