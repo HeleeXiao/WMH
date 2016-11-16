@@ -25,7 +25,7 @@
         text-align: center;
         font-size: 18px;
         background: #fff;
-
+        width: 28%;
         /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
@@ -86,7 +86,7 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
     @foreach( $demand->file as $file )
-        <div class="swiper-slide"><img src="{{ $file->path }}" width="186.667" height="185"></div>
+        <div class="swiper-slide"><img src="{{ $file->path }}" width="100%" height="185"></div>
      <!--    <div class="swiper-slide">Slide 2</div>
      <div class="swiper-slide">Slide 3</div>
      <div class="swiper-slide">Slide 4</div>
