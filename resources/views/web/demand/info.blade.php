@@ -71,7 +71,7 @@
               centeredSlides: true,
               paginationClickable: true,
               spaceBetween: 30,
-              loop:true,
+              loop:false,
               speed:500,
               autoplay:3000
           });
