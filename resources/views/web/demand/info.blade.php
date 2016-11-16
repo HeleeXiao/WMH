@@ -97,27 +97,6 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
 </div>
-    <td>
-
-        <p class="album-info">
-            <span class="album-count"> {{ $demand->file->count() }}张图片 </span>
-            &nbsp;<b>·</b>&nbsp;
-            <span class="like-count"><i>10</i>人关注</span>
-        </p>
-        <p class="album-desc"></p>
-    </td>
-    </tr>
-
-    <!--             <td>
-        <h1 class="album-title">{{ $demand->title }}</h1>
-        <p class="album-info">
-            <span class="album-count">{{ $demand->file->count() }}张图片</span>
-            &nbsp;<b>·</b>&nbsp;<span class="like-count"><i>{{ $demand->follow->count() }}</i>人关注</span></p>
-        <p class="album-desc">
-        </p>
-    </td>
-                </tr> -->
-
             </tbody>
         </table>
         <div class="album-header-attr-mask"></div>
@@ -128,6 +107,15 @@
                 <span class="name">{{ $demand->user->name }}</span>
             </a>
             <span class="album-title">{{ $demand->title }} </span>
+            <div class="album-incoun">
+                <p class="album-info">
+                  <span class="album-count"> {{ $demand->file->count() }}张图片 </span>
+                  &nbsp;<b>·</b>&nbsp;
+                  <span class="like-count"><i>10</i>人关注</span>
+                </p>
+
+            </div>
+
             <div class="album-action dib">
                 <a title="收藏" class="albumcollectbtn" href="javascript:;" ><i></i><span>收藏</span></a>
                 <a title="赞" class="albumlikebtn "  href="javascript:;"><i></i><span>赞</span></a>
