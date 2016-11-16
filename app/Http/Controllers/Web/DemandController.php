@@ -38,6 +38,7 @@ class DemandController extends Controller
                 'css'  =>    [
                     '/css/lib.6f910717.css',
                     '/css/album-detail.f84edf77.css',
+                    "new_index.css"
                 ],
             ]
         ]);

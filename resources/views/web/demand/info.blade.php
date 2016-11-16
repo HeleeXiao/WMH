@@ -4,8 +4,8 @@
     {{@$title}}
 @stop
 @section('top')
+
 <link rel="stylesheet" type="text/css" href="/css/swiper.min.css">
-<script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/common/swiper.min.js"></script>
  <style>
     body {
@@ -31,6 +31,7 @@
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
+        cursor: pointer;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         -webkit-justify-content: center;
@@ -54,6 +55,9 @@
         margin: 0 10px;
         font-size: 13px;
     }
+    .menu-bar .right-part {
+        margin-top: 4px;
+    }
     </style>
    <script>
    $(function(){
@@ -75,7 +79,7 @@
 </script>
 @stop
 @section('content')
-{{dump($demand->file->toArray())}}
+
 <div class="container" style="margin:0 auto;padding: 48px 0 0 0;width: 100%;">
     <div class="album-header">
         <img class="album-header-bg ohmyblured" src="{{url("/images/banner/20161108105946_nxsJL.thumb.1200_280_g.jpeg")}}" height="280">
@@ -87,11 +91,6 @@
     <div class="swiper-wrapper">
     @foreach( $demand->file as $file )
         <div class="swiper-slide"><img src="{{ $file->path }}" width="100%" height="185"></div>
-     <!--    <div class="swiper-slide">Slide 2</div>
-     <div class="swiper-slide">Slide 3</div>
-     <div class="swiper-slide">Slide 4</div>
-     <div class="swiper-slide">Slide 5</div>
-     <div class="swiper-slide">Slide 6</div> -->
     @endforeach
     </div>
     <div class="swiper-pagination"></div>
