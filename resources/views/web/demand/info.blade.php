@@ -4,6 +4,11 @@
     {{@$title}}
 @stop
 @section('top')
+    <style>
+        .menu-bar .login-nav {
+            margin-top:4px
+        }
+    </style>
 @stop
 @section('content')
 <div class="container" style="margin:0 auto;padding: 48px 0 0 0;width: 100%;">

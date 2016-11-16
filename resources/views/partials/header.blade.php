@@ -3,7 +3,7 @@
 <meta name="author" content="{{ Config::get('cms.author') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('/assets/styles/bootstrap.'.Config::get('theme.name', 'default').'.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
+
 
 <script src="{{ asset('/js/jquery.js?t=1476958143') }}"></script>
 <script src="{{ asset('/layer/layer.js?v=2.4') }}"></script>
@@ -21,7 +21,7 @@
         @endforeach
     @endif
 @endif
-
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
 @section('css')
 @show
 
@@ -30,4 +30,23 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="shortcut icon" href="{!! asset('favicon.ico') !!}">
+{{--<link rel="shortcut icon" href="{!! asset('favicon.ico') !!}">--}}
+<script>
+    /* *
+     * * 格式化 金额
+     * *
+     * */
+    function fmoney(s, n)
+    {
+        n = n > 0 && n <= 20 ? n : 2;
+        s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+        var l = s.split(".")[0].split("").reverse(),
+                r = s.split(".")[1];
+        t = "";
+        for(i = 0; i < l.length; i ++ )
+        {
+            t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+        }
+        return t.split("").reverse().join("") + "." + r;
+    }
+</script>

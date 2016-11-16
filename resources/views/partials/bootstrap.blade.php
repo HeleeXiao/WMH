@@ -1,13 +1,14 @@
+
 <div id="header" class="hts " style="left: 0px;">
     <div class="wrapper wrapper-996">
         <div class="menu-bar">
-            <div class="left-part">
+            <div class="left-part" >
                 <a href="{{url("/".config("app.version"))}}">
                     <img id="huaban" src="/images/app/logo.png" alt="">
                 </a>
 
-                <a href="/discovery/" class="header-item active">发现</a>
-                <a href="/all/" class="header-item ">最新</a>
+                <a href="/discovery/" class="header-item active" style="font-size: 14px;">发现</a>
+                <a href="/all/" class="header-item " style="font-size: 14px;">最新</a>
                 <div class="menu-nav">
                 </div>
             </div>
@@ -15,7 +16,7 @@
                 <div class="login-nav">
                     @if( ! Auth::check())
                         <a href="{{ url("/". config("app.version") ."register") }}" rel="nofollow" class="register btn rbtn">
-                            <span class="text"> 注册</span>
+                            <span class="text" style="color:white"> 注册</span>
                         </a>
                         <a href="{{ url("/". config("app.version") ."login") }}" rel="nofollow" class="login btn wbtn">
                             <span class="text"> 登录</span>
