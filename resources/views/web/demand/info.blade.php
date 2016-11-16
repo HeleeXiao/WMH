@@ -25,7 +25,7 @@
         text-align: center;
         font-size: 18px;
         background: #fff;
-        width: 28%;
+        width: 28% ;
         /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
