@@ -47,7 +47,7 @@ class HomeController extends Controller
         //TODO getRecommendedContent
         try {
             $demands = Demand::where('state', 0)->where("status", 0)
-                ->with(["user", 'tag', "cover", 'discus'])->paginate(24);
+                ->with(["user", "cover"])->paginate(24);
 
             return view("web.home", [
                 "title" => '首页',
@@ -72,6 +72,9 @@ class HomeController extends Controller
     {
         if($request->method() == "GET")
         {
+            if(Auth::check()){
+                return Redirect::intended("/");
+            }
             return view("web.login-register",[
                 "page"  =>  "login",
             ]);
@@ -127,6 +130,9 @@ class HomeController extends Controller
      * @author      < 18681032630@163.com >
      */
     public function getRegister(){
+        if(Auth::check()){
+            return Redirect::intended("/");
+        }
         return view("web.login-register",[
             "title" =>  '注册|登录',
             "page"  =>  "register",
@@ -167,7 +173,7 @@ class HomeController extends Controller
         if( $spit['status'] == 200 )//调用注册类
         {
             Auth::loginUsingId($spit['result']->id);
-            return redirect("/");
+            return Redirect::intended("/");
         }
         return back()->with("pageMsg","注册失败")->with("level","fail");
     }

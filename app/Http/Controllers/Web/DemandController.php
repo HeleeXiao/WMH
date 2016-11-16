@@ -21,11 +21,15 @@ class DemandController extends Controller
             $user->with(["content"=>function($content){
                 $content->with("head");
             }]);
-        }, 'tag', "cover", 'discus',"file"])->first();
+        }, 'tag', "cover", 'discus',"file","follow"])->first();
         if( !$demand )
         {
             abort("404",'没有找到该商品');
         }
+        \Request::session()->put('url', [
+            "intended" => url(\Request::server("REQUEST_URI"))
+        ]);
+//        dd($demand->toArray());
         return view("web.demand.info",[
             "title"   => $demand->title,
             "demand"  => $demand,

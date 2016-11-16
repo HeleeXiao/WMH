@@ -14,6 +14,8 @@
 get("/",function(){
     return redirect("/".config("app.version"));
 });
+Route::controller("u","Web\\UserController");
+
 Route::controller("s","Web\\DemandController");
 
 Route::controller(substr(config("app.version"),0,strpos(config("app.version"),"/")),"Web\\HomeController");
