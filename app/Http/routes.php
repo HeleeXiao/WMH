@@ -14,7 +14,6 @@
 get("/",function(){
     return redirect("/".config("app.version"));
 });
-Route::controller("u","Web\\UserController");
 
 Route::controller("s","Web\\DemandController");
 
@@ -22,3 +21,6 @@ Route::controller(substr(config("app.version"),0,strpos(config("app.version"),"/
 
 Route::controller("api","Web\\GlobalController");
 
+Route::group(['prefix'=>"buddy","namespace"=>"Web"],function(){
+    get("/{id}",['uses'=>'UserController@index','middleware' => ['login']]);
+});

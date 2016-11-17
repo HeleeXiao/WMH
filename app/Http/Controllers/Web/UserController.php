@@ -10,27 +10,22 @@ use Auth;
 class UserController extends Controller
 {
     private $IS_ME = false;
-
-    public function __construct()
-    {
-        $this->middleware("login");
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getIndex(Request $request)
+    public function index($user_id=false, Request $request)
     {
-        if( !$request->has("u") && !Auth::check()){
+        if( !$user_id && !Auth::check()){
             abort(404,"没有找到该用户");
         }
-        if( !$request->has("u") || ( $request->has("u") && e($request->input("u")) == Auth::user()->id ) )
+        if( !$user_id || ( $user_id && e($user_id) == Auth::user()->id ) )
         {
             $this->IS_ME = true;
             $user = Auth::user();
         }else{
-            $user = User::find(e($request->input("u")));
+            $user = User::find(e($user_id));
         }
         dd($user);
     }

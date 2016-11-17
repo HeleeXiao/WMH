@@ -196,4 +196,19 @@ class HomeController extends Controller
         $paginator = new Paginator($pagedata,$pagesize);
         dump($paginator);
     }
+
+    /**
+     * @name        getNavigation
+     * @DateTime    ${DATE}
+     * @param       \Illuminate\Http\Request.
+     * @return      \Illuminate\Support\Facades\View
+     * @version     1.0
+     * @author      < 18681032630@163.com >
+     */
+    public function getNavigation()
+    {
+        return view("web.newest",[
+            "title" => "给心灵一片净土",
+        ]);
+    }
 }

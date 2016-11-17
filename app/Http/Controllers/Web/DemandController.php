@@ -29,7 +29,7 @@ class DemandController extends Controller
         \Request::session()->put('url', [
             "intended" => url(\Request::server("REQUEST_URI"))
         ]);
-//        dd($demand->toArray());
+
         return view("web.demand.info",[
             "title"   => $demand->title,
             "demand"  => $demand,

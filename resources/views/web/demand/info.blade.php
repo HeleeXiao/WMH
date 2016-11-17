@@ -127,7 +127,7 @@
         <div class="album-header-attr-mask"></div>
         <div class="album-header-attr tc">
 
-            <a target="_blank" class="album-account" href="{{url("u/?u=".$demand->user->id)}}">
+            <a target="_blank" class="album-account" href="{{url("buddy/".$demand->user->id)}}">
                 <img class="avatar" src="{{ url($demand->user->content->head->path) }}">
                 <span class="name">{{ $demand->user->name }}</span>
             </a>

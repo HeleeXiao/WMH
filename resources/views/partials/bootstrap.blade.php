@@ -6,9 +6,12 @@
                 <a href="{{url("/".config("app.version"))}}">
                     <img id="huaban" src="/images/app/logo.png" alt="">
                 </a>
-
-                <a href="/discovery/" class="header-item active" style="font-size: 14px;">发现</a>
-                <a href="/all/" class="header-item " style="font-size: 14px;">最新</a>
+                @if(Auth::check())
+                    <a href="{{url("/".config("app.version")."all")}}" class="header-item active" style="font-size: 14px;">发现</a>
+                @else
+                    <a href="{{url("/".config("app.version")."navigation")}}" class="header-item active" style="font-size: 14px;">发现</a>
+                @endif
+                <a href="{{url("/".config("app.version")."new")}}" class="header-item " style="font-size: 14px;">最新</a>
                 <div class="menu-nav">
                 </div>
             </div>
