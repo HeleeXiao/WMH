@@ -37,8 +37,14 @@ class HomeController extends Controller
     {
         if(Request::ajax() === true)
         {
-            return Demand::where('state', 0)->where("status", 0)
-                ->with(["user", "cover","discus"])->paginate( self::HOME_LIMIT );
+            $page = Request::has("page") ? Request::input("page") : 2;
+//            return response()->json($page);
+            return response()->json( Demand::where('state', 0)->where("status", 0)
+                ->with(["user", "cover","discus"])
+                ->skip(self::HOME_LIMIT * ($page - 1 ))
+                ->take(self::HOME_LIMIT)
+                ->orderBy("id","asc")
+                ->get()->toArray(false) );
         }
         $this->media = [
             'js'  =>    [

@@ -149,8 +149,8 @@
                     ,done: function(page, next){
                         var lis = [];
                         var html;
-                        $.getJSON('/?page='+page, function(res){
-                            layui.each(res.data, function(index, item){
+                        $.get('/{{config("app.version")}}?page='+page, function(res){
+                            layui.each(res, function(index, item){
                                 if( Math.abs(( index+1) % 3 ) == 1 ) {
                                     html = '\<div class="recommend-hidebox pl-right" >'+
                                                 '\<div class="recommend-imgbox recommend-box" >'+
@@ -225,7 +225,7 @@
                                 lis.push(html);
                             });
                             //执行下一页渲染，如果不存在数据，则告诉flow已经没有更多
-                            next(lis.join(''), (res.data.length > 0) ? true : false );
+                            next(lis.join(''), (res.length > 0) ? true : false );
 //                            next(lis.join(''), res.data.length === 0);
                         });
                     }
