@@ -34,7 +34,8 @@ class DemandController extends Controller
             "title"   => $demand->title,
             "demand"  => $demand,
             "media"   => [
-                'js'  =>    [],
+                'js'  =>    [
+                ],
                 'css'  =>    [
                     '/css/lib.6f910717.css',
                     '/css/album-detail.f84edf77.css',

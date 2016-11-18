@@ -11,7 +11,7 @@ use App\Repositories\UserRepository;
 use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use Auth;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -27,6 +27,7 @@ use TomLingham\Searchy\Facades\Searchy;
 class HomeController extends Controller
 {
     private $media;
+    const HOME_LIMIT = 12;
     /**
      * Display a listing of the resource.
      *
@@ -34,6 +35,11 @@ class HomeController extends Controller
      */
     public function getIndex()
     {
+        if(Request::ajax() === true)
+        {
+            return Demand::where('state', 0)->where("status", 0)
+                ->with(["user", "cover","discus"])->paginate( self::HOME_LIMIT );
+        }
         $this->media = [
             'js'  =>    [
                 '/layer/layui.js',
@@ -47,7 +53,7 @@ class HomeController extends Controller
         //TODO getRecommendedContent
         try {
             $demands = Demand::where('state', 0)->where("status", 0)
-                ->with(["user", "cover"])->paginate(24);
+                ->with(["user", "cover","discus"])->paginate( self::HOME_LIMIT );
 
             return view("web.home", [
                 "title" => '首页',

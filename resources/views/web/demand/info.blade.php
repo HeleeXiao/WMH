@@ -152,7 +152,6 @@
         </div>
         <div class="album-header-mask dn"></div>
     </div>
-
 </div>
 @stop
 @section('bottom')

@@ -3,11 +3,13 @@
 <meta name="author" content="{{ Config::get('cms.author') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('/assets/styles/bootstrap.'.Config::get('theme.name', 'default').'.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/layui/css/layui.css') }}">
 
 
 <script src="{{ asset('/js/jquery.js?t=1476958143') }}"></script>
 <script src="{{ asset('/layer/layer.js?v=2.4') }}"></script>
 <script src="{{ asset('/js/common/vilidata.js') }}"></script>
+<script src="{{ asset('/layui/layui.js') }}"></script>
 <script type="text/javascript" src="http://cdn.staticfile.org/twitter-bootstrap/3.0.1/js/bootstrap.min.js"></script>
 @if(isset($media))
     @if($media['js'])
