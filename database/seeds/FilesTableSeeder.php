@@ -70,6 +70,12 @@ class FilesTableSeeder extends Seeder
                 "name"      => "",
                 "type"      => 2
             ],
+            [
+                "path"      => "/images/user/default.jpg",
+                "token"     => get_token(),
+                "name"      => "",
+                "type"      => 3
+            ],
         ];
     }
 }

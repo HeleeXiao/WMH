@@ -1,13 +1,13 @@
 
 </div>
 </div>
-<div id="footer">
+<div id="footer" style="margin-top: 3rem;">
 
     <div class="container hidden-xs">
         <div class="row">
             <div class="col-xs-8">
-                <p class="text-muted credit">
-                    &copy; <a href="/">yiXinyiyi</a> 2016. allRights reserved.
+                <p class="text-muted credit" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">
+                    &copy; <a href="/">wmh</a> 2016. All rights reserved.
                 </p>
             </div>
             <div class="col-xs-4">

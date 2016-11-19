@@ -149,7 +149,7 @@
                     ,done: function(page, next){
                         var lis = [];
                         var html;
-                        $.get('/{{config("app.version")}}?page='+page, function(res){
+                        $.get('{{ route("demand.getHomeDataJson") }}?page='+page, function(res){
                             layui.each(res, function(index, item){
                                 if( Math.abs(( index+1) % 3 ) == 1 ) {
                                     html = '\<div class="recommend-hidebox pl-right" >'+

@@ -1,0 +1,107 @@
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+.swiper-container {
+    width: 66%;
+    height: 185px;
+    margin: 13px auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    width: 28% ;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    cursor: pointer;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.append-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+.append-buttons a {
+    display: inline-block;
+    border: 1px solid #007aff;
+    color: #007aff;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 0 10px;
+    font-size: 13px;
+}
+.menu-bar .right-part {
+    margin-top: 4px;
+}
+
+.info-center{
+    width: 52%;
+    float: left;
+}
+.info-center ul li{
+    padding-left: 1rem;
+}
+#discus-form{
+    width: 45%;
+    float: right;
+}
+#discus-form,.info-center{
+    min-height: 300px;
+    background: white;
+    margin-top: 2rem;
+    border: 1px solid #d2d2d2;
+}
+.userinfo{
+    margin: 16px 0 16px 50px;
+    font-size: 13px;
+}
+.userinfo .name {
+    color: #444;
+}
+.userinfo .name a:link, .userinfo .name a:visited{
+    text-decoration: none;
+    cursor: auto;
+}
+.userinfo i {
+    padding: 0 8px;
+}
+.avatar {
+    width: 36px;
+    height: 36px;
+    margin: 2px;
+    display: block;
+    float: left;
+    position: relative;
+}
+.avatar img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 0;
+}
+.description{
+    min-height: 8rem;
+    background: white;
+    margin: 2.5rem 1rem 0 1rem;
+    padding-bottom:1rem ;
+    border-bottom: 1px solid #d2d2d2;
+    text-indent:2em;font-size: 15px;
+    line-height: 25px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    /*font-weight: bold;*/
+}

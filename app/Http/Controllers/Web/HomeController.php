@@ -11,7 +11,7 @@ use App\Repositories\UserRepository;
 use App\Events\LoginEvent;
 use App\Http\Controllers\Controller;
 use Auth;
-use Request;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -35,17 +35,6 @@ class HomeController extends Controller
      */
     public function getIndex()
     {
-        if(Request::ajax() === true)
-        {
-            $page = Request::has("page") ? Request::input("page") : 2;
-//            return response()->json($page);
-            return response()->json( Demand::where('state', 0)->where("status", 0)
-                ->with(["user", "cover","discus"])
-                ->skip(self::HOME_LIMIT * ($page - 1 ))
-                ->take(self::HOME_LIMIT)
-                ->orderBy("id","asc")
-                ->get()->toArray(false) );
-        }
         $this->media = [
             'js'  =>    [
                 '/layer/layui.js',

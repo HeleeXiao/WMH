@@ -22,4 +22,12 @@ class Discus extends Model
         'user_id', 'demand_id', 'parent_id','content','status', 'state',
         'type', 'file_id',
     ];
+
+    /*
+     * Eloquent hasOne User Models
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class,'id',"user_id");
+    }
 }
