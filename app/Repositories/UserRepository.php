@@ -100,43 +100,56 @@ class UserRepository{
     {
         $tab = [
             [
-                "title" => "浏览记录",
+                "title" => "历史",
                 "data"=>[],
                 "active"=>true,
                 "name"=>"browses",
+                "icon" => "&#xe60e;",
             ],
             [
                 "title" => "关注",
                 "data"=>[],
                 "active"=>false,
                 "name"=>"follow_user",
+                "icon" => "&#xe618;",
             ],
             [
                 "title" => "粉丝",
                 "data"=>[],
                 "active"=>false,
                 "name"=>"fans",
+                "icon" => "&#xe60c;",
             ]
         ];
         if( auth()->id() == $user_id )
         {
             $tab[] = [
-                "title" => "消息",
-                "data"=>[],
-                "active"=>false,
-                "name" => 'message'
-            ];
-            $tab[] = [
                 "title" => "收藏",
                 "data"=>[],
                 "active"=>false,
                 "name"=>"follow_demand",
+                "icon" => "&#xe629;",
             ];
             $tab[] = [
-                "title" => "交易记录",
+                "title" => "交易",
                 "data"=>[],
                 "active"=>false,
-                "name" => 'trade'
+                "name" => 'trade',
+                "icon" => "&#xe64c;",
+            ];
+            $tab[] = [
+                "title" => "消息",
+                "data"=>[],
+                "active"=>false,
+                "name" => 'message',
+                "icon" => "&#xe63a;",
+            ];
+            $tab[] = [
+                "title" => "设置",
+                "data"=>[],
+                "active"=>false,
+                "name" => 'set',
+                "icon" => "&#xe620;",
             ];
         }
         return $tab;

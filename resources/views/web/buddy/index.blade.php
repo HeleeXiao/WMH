@@ -12,7 +12,7 @@
             font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
         }
         .section ul li{
-            width:12rem;
+            width:11rem;
             text-align: center;
         }
     </style>
@@ -27,6 +27,9 @@
                     <a class="people-head" href="javascript:void(0);">
                         <img @if($IS_ME === true) class="buddy-img" @endif src="{{ $buddy->content->head->path }}">
                     </a>
+                    {{--<i class="layui-icon">--}}
+                        {{--&#xe611;--}}
+                    {{--</i>--}}
                 </td>
             </tr>
             <tr>
@@ -89,148 +92,162 @@
     <div class="section">
         <div class="layui-tab">
             <ul class="layui-tab-title">
-
-                @foreach($tab as $value)
-                    <li id="{{ $value['name'] }}" @if($value['active'])class="layui-this"@endif>{{ $value['title'] }}</li>
-                @endforeach
+            @foreach($tab as $value)
+                <li id="{{ $value['name'] }}" @if($value['active'])class="layui-this"@endif>
+                    <i class="layui-icon">
+                        {{ $value['icon'] }}
+                    </i>
+                    {{ $value['title'] }}
+                </li>
+            @endforeach
             </ul>
             <div class="layui-tab-content">
-
-                @foreach($tab as $value)
-                    <div class="layui-tab-item @if($value['active']) layui-show @endif" style="min-height: 200px">
-                        @if(str_is( 'follow_user', $value['name']) )
-                            <!-- 代码 开始 -->
-                            <div class="case-content">
-                                @foreach($buddy->follow as $value)
-                                    @if($value->idol != null)
-                                        <div class="case-item">
-                                            <div class="ih-item circle effect1">
-                                                <a href="{{ url('buddy/'.$value->idol->id) }}" target="_blank">
-                                                    <div class="spinner"></div>
-                                                    <div class="img"><img src="{{url($value->idol->content->head->path)}}" alt="懒人图库"></div>
-                                                    <div class="info">
-                                                        <div class="info-back">
-                                                            <p>{{ str_limit($value->idol->name,15) }}</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                            <!-- 代码 结束 -->
-                        @endif
-                        @if(str_is( 'fans', $value['name'] ))
-                                <div class="case-content">
-                                    @foreach($buddy->fans as $value)
-                                            <div class="case-item">
-                                                <div class="ih-item circle effect1">
-                                                    <a href="{{ url('buddy/'.$value->user->id) }}" target="_blank">
-                                                        <div class="spinner"></div>
-                                                        <div class="img"><img src="{{url($value->user->content->head->path)}}" alt="懒人图库"></div>
-                                                        <div class="info">
-                                                            <div class="info-back">
-                                                                <p>{{ str_limit($value->user->name,15) }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
+            @foreach($tab as $value)
+                <div class="layui-tab-item @if($value['active']) layui-show @endif" style="min-height: 200px">
+                @if(str_is( 'follow_user', $value['name']) )
+                    <!-- 代码 开始 -->
+                    <div class="case-content">
+                        @foreach($buddy->follow as $value)
+                            @if($value->idol != null)
+                                <div class="case-item">
+                                    <div class="ih-item circle effect1">
+                                        <a href="{{ url('buddy/'.$value->idol->id) }}" target="_blank">
+                                            <div class="spinner"></div>
+                                            <div class="img"><img src="{{url($value->idol->content->head->path)}}" alt="懒人图库"></div>
+                                            <div class="info">
+                                                <div class="info-back">
+                                                    <p>{{ str_limit($value->idol->name,15) }}</p>
                                                 </div>
                                             </div>
-                                    @endforeach
-                                </div>
-                        @endif
-                        @if(str_is( 'browses', $value['name'] ))
-                            @foreach($buddy->browse as $key => $p_demand)
-                                @if( ABS(( $key+1) % 3 ) == 1 )
-                                    <div class="recommend-hidebox pl-right">
-                                        <div class="recommend-imgbox recommend-box">
-                                            <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                                <img lay-src="{{url($p_demand->demand->cover->path)}}"
-                                                     data-baiduimageplus-ignore="1">
-                                            </a>
-                                        </div>
-                                        <div class="recommend-infobox board recommend-box big">
-                                            <div class="recommend-data board">
-                                            </div>
-                                            <h2>
-                                                <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                                    {{ $p_demand->demand->title }}
-                                                </a>
-                                            </h2>
-                                            <p>
-                                                <span>
-                                                    121 赞许
-                                                </span>
-                                                <span>
-                                                    {{ $p_demand->demand->discus->count() }} 评论
-                                                </span>
-                                                                    </p>
-                                            <span>
-                                                来自
-                                                <a href="{{url("buddy/".$p_demand->demand->user->id)}}" rel="nofollow">
-                                                    {{ @$p_demand->demand->user->name }}
-                                                </a>
-                                            </span>
-                                            <div class="info-tra-left big">
-                                            </div>
-                                        </div>
-                                    </div>
-                                @elseif( ABS(( $key+1) % 3 ) == 2 )
-                                    <div class="recommend-box">
-                                        <div class="recommend-infobox board small">
-                                            <div class="recommend-data board">
-                                            </div>
-                                            <h2>
-                                                <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                                    {{ $p_demand->demand->title }}
-                                                </a>
-                                            </h2>
-                                            <p>
-                                            <span>
-                                                121 赞许
-                                            </span>
-                                            <span>
-                                                {{ $p_demand->demand->discus->count() }} 评论
-                                            </span>
-                                                                </p>
-                                        <span>
-                                            来自
-                                            <a href="{{url("buddy/".@$p_demand->demand->user->id)}}" rel="nofollow">
-                                                {{ @$p_demand->demand->user->name }}
-                                            </a>
-                                        </span>
-                                        </div>
-                                        <div class="info-tra-left">
-                                        </div>
-                                        <div class="recommend-infobox board small pl-right">
-                                            <div class="recommend-data board">
-                                            </div>
-                                            <h2>
-                                                <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                                    {{ $p_demand->demand->name }}
-                                                </a>
-                                            </h2>
-                                            <p>
-                                            </p>
-                                        </div>
-                                        <div class="info-tra-right">
-                                        </div>
-                                    </div>
-                                @elseif( ABS(( $key+1) % 3 ) == 0 )
-                                    <div class="recommend-imgbox recommend-box">
-                                        <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                            <img lay-src="{{url($p_demand->demand->cover->path)}}">
                                         </a>
                                     </div>
-                                @endif
-                            @endforeach
-                        @endif
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
-                @endforeach
+                    <!-- 代码 结束 -->
+                @endif
+                @if(str_is( 'fans', $value['name'] ))
+                    <div class="case-content">
+                        @foreach($buddy->fans as $value)
+                            <div class="case-item">
+                                    <div class="ih-item circle effect1">
+                                        <a href="{{ url('buddy/'.$value->user->id) }}" target="_blank">
+                                            <div class="spinner"></div>
+                                            <div class="img"><img src="{{url($value->user->content->head->path)}}" alt="懒人图库"></div>
+                                            <div class="info">
+                                                <div class="info-back">
+                                                    <p>{{ str_limit($value->user->name,15) }}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                        @endforeach
+                    </div>
+                @endif
+                @if(str_is( 'browses', $value['name'] ))
+                    @foreach($buddy->browse as $key => $p_demand)
+                        @if( ABS(( $key+1) % 3 ) == 1 )
+                            <div class="recommend-hidebox pl-right">
+                                <div class="recommend-imgbox recommend-box">
+                                    <a href="{{url("s/show/".$p_demand->demand->id)}}">
+                                        <img lay-src="{{url($p_demand->demand->cover->path)}}"
+                                             data-baiduimageplus-ignore="1">
+                                    </a>
+                                </div>
+                                <div class="recommend-infobox board recommend-box big">
+                                    <div class="recommend-data board">
+                                    </div>
+                                    <h2>
+                                        <a href="{{url("s/show/".$p_demand->demand->id)}}">
+                                            {{ $p_demand->demand->title }}
+                                        </a>
+                                    </h2>
+                                    <p>
+                                        <span>
+                                            121 赞许
+                                        </span>
+                                        <span>
+                                            {{ $p_demand->demand->discus->count() }} 评论
+                                        </span>
+                                                            </p>
+                                    <span>
+                                        来自
+                                        <a href="{{url("buddy/".$p_demand->demand->user->id)}}" rel="nofollow">
+                                            {{ @$p_demand->demand->user->name }}
+                                        </a>
+                                    </span>
+                                    <div class="info-tra-left big">
+                                    </div>
+                                </div>
+                            </div>
+                        @elseif( ABS(( $key+1) % 3 ) == 2 )
+                            <div class="recommend-box">
+                                <div class="recommend-infobox board small">
+                                    <div class="recommend-data board">
+                                    </div>
+                                    <h2>
+                                        <a href="{{url("s/show/".$p_demand->demand->id)}}">
+                                            {{ $p_demand->demand->title }}
+                                        </a>
+                                    </h2>
+                                    <p>
+                                    <span>
+                                        121 赞许
+                                    </span>
+                                    <span>
+                                        {{ $p_demand->demand->discus->count() }} 评论
+                                    </span>
+                                                        </p>
+                                <span>
+                                    来自
+                                    <a href="{{url("buddy/".@$p_demand->demand->user->id)}}" rel="nofollow">
+                                        {{ @$p_demand->demand->user->name }}
+                                    </a>
+                                </span>
+                                </div>
+                                <div class="info-tra-left">
+                                </div>
+                                <div class="recommend-infobox board small pl-right">
+                                    <div class="recommend-data board">
+                                    </div>
+                                    <h2>
+                                        <a href="{{url("s/show/".$p_demand->demand->id)}}">
+                                            {{ $p_demand->demand->name }}
+                                        </a>
+                                    </h2>
+                                    <p>
+                                    </p>
+                                </div>
+                                <div class="info-tra-right">
+                                </div>
+                            </div>
+                        @elseif( ABS(( $key+1) % 3 ) == 0 )
+                            <div class="recommend-imgbox recommend-box">
+                                <a href="{{url("s/show/".$p_demand->demand->id)}}">
+                                    <img lay-src="{{url($p_demand->demand->cover->path)}}">
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+                @if(str_is( 'follow_demand', $value['name'] ))
+                    TODO 收藏列
+                @endif
+                @if(str_is( 'trade', $value['name'] ))
+                    TODO 交易列
+                @endif
+                @if(str_is( 'message', $value['name'] ))
+                    TODO 消息列
+                @endif
+                @if(str_is( 'set', $value['name'] ))
+                    TODO 设置列
+                @endif
+            </div>
+            @endforeach
             </div>
         </div>
-
     </div>
 
 @stop

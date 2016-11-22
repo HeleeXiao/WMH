@@ -102,8 +102,8 @@
                         </a>
                     </span>
                     </div>
-                    <div class="info-tra-left">
-                    </div>
+                    {{--<div class="info-tra-left">--}}
+                    {{--</div>--}}
                     <div class="recommend-infobox board small pl-right">
                         <div class="recommend-data board">
                         </div>
@@ -115,8 +115,8 @@
                         <p>
                         </p>
                     </div>
-                    <div class="info-tra-right">
-                    </div>
+                    {{--<div class="info-tra-right">--}}
+                    {{--</div>--}}
                 </div>
                 @elseif( ABS(( $key+1) % 3 ) == 0 )
                     <div class="recommend-imgbox recommend-box">
