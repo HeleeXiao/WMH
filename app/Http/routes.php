@@ -34,5 +34,5 @@ Route::controller("api","Web\\GlobalController",[
 ]);
 
 Route::group(['prefix'=>"buddy","namespace"=>"Web"],function(){
-    get("/{id}",['uses'=>'UserController@index','middleware' => ['login']]);
+    get("/{id?}",['uses'=>'UserController@index','middleware' => ['login']]);
 });

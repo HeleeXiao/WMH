@@ -16,6 +16,7 @@ class CreateUserContentTable extends Migration
             Schema::create('user_contents', function (Blueprint $table) {
                 $table->increments('id')->comment("用户详细信息id");
                 $table->integer('user_id')->comment("用户id")->unique();
+                $table->string('description')->comment("个性签名")->nullable();
                 $table->tinyInteger('file_id')->comment("头像-文件关联id");
                 $table->tinyInteger("sex")->comment("性别")->default(0);
                 $table->tinyInteger("age")->comment("年龄")->nullable();

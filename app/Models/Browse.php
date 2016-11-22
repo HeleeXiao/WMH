@@ -18,6 +18,21 @@ class Browse extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'demand_id', 'state',
+        'user_id', 'demand_id', 'state','tag_id',
     ];
+
+    /*
+     * demand
+     */
+    public function demand()
+    {
+        return $this->hasOne(Demand::class,'id','demand_id');
+    }
+    /*
+     * Tag
+     */
+    public function tag()
+    {
+        return $this->hasOne(Tag::class,'id','tag_id');
+    }
 }

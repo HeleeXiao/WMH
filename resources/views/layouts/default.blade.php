@@ -34,7 +34,7 @@
 @include('partials.bootstrap')
 <div class="container"  onmouseover="$('.lanrenzhijia').hide()">
 
-@include('partials.notifications')
+{{--@include('partials.notifications')--}}
 @section('content')
 @show
 </div>

@@ -1,0 +1,79 @@
+*{margin:0;padding:0;list-style-type:none;}
+
+.case-content{overflow:hidden;margin:0 auto;width:100%}
+.case-item{width:100px;height:100px;float:left;margin:10px 10px;margin-bottom:20px}
+.ih-item{width:100%;height:100%;position:relative;-webkit-transition:all .35s ease-in-out;-moz-transition:all .35s ease-in-out;transition:all .35s ease-in-out}
+.ih-item,.ih-item *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.ih-item a{color:#333}
+.ih-item a:hover{text-decoration:none}
+.ih-item img{
+  width:100%;
+  height:100%
+}
+/*.ih-item.circle,.ih-item.circle .img{*/
+  /*/!*position:relative;*!/*/
+  /*width:90%;*/
+  /*height:90%;*/
+  /*border-radius:50%*/
+/*}*/
+.ih-item.circle .img:before{position:absolute;display:block;content:'';width:100%;height:100%;border-radius:50%;box-shadow:inset 0 0 0 16px rgba(255,255,255,.6),0 1px 2px rgba(0,0,0,.3);-webkit-transition:all .35s ease-in-out;-moz-transition:all .35s ease-in-out;transition:all .35s ease-in-out}
+.ih-item.circle .img img{border-radius:50%}
+.ih-item.circle .info{position:absolute;top:0;bottom:0;left:0;right:0;text-align:center;border-radius:50%;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.ih-item.square{
+  position:relative;
+  /*width:316px;*/
+  /*height:216px;*/
+  border:8px solid #fff;
+  box-shadow:1px 1px 3px rgba(0,0,0,.3)
+}
+.ih-item.square .info{position:absolute;top:0;bottom:0;left:0;right:0;text-align:center;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.ih-item.circle.effect1 .spinner{
+  width:100%;height:100%;
+  border:10px solid #f4d1a5;
+  border-right-color: #4ffab6;
+  border-bottom-color: #64641b;
+  border-radius:50%;
+  -webkit-transition:all .8s ease-in-out;
+  -moz-transition:all .8s ease-in-out;
+  transition:all .8s ease-in-out
+}
+.ih-item.circle.effect1 .img{
+  position:absolute;
+  top:5px;
+  bottom:0;
+  left:5px;
+  right:0;
+  width:90%;
+  height:90%
+}
+.ih-item.circle.effect1 .img:before{display:none}
+.ih-item.circle.effect1.colored .info{background:#1a4a72;background:rgba(26,74,114,.6)}
+.ih-item.circle.effect1 .info{
+  /*top:10px;*/
+  /*bottom:0;*/
+  /*left:10px;*/
+  /*right:0;*/
+  background:#333;
+  background:rgba(0,0,0,.6);
+  opacity:0;
+  -webkit-transition:all .8s ease-in-out;
+  -moz-transition:all .8s ease-in-out;
+  transition:all .8s ease-in-out
+}
+.ih-item.circle.effect1 .info p{
+  color:#bbb;
+  padding:40% 0 0 0;
+  margin:0 30px;
+  font-size:12px;
+  font-weight: bold;
+}
+.ih-item.circle.effect1 a:hover .spinner{
+  -webkit-transform:rotate(270deg);
+  -moz-transform:rotate(270deg);
+  -ms-transform:rotate(270deg);
+  -o-transform:rotate(270deg);
+  transform:rotate(270deg)
+}
+ .ih-item.circle.effect1 a:hover .info{opacity:0.8}
+
+/* ����ͼ�� �Ѽ����� www.lanrentuku.com */

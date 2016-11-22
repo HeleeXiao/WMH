@@ -84,7 +84,7 @@ h2 {
 }
 h1,h2 {
 	letter-spacing:-.0125em;
-	font-weight:700
+	/*font-weight:700*/
 }
 h3 {
 	font-size:1.5em;

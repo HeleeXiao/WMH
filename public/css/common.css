@@ -1,0 +1,80 @@
+budy{
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+.flow-btn,.lay-btn{
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    width: 65px;
+    line-height: 32px;
+    text-align: center;
+    background-color: #f46;
+}
+.flow-btn:link,.flow-btn:visited,.lay-btn:link,.lay-btn:visited{
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+}
+.flow-btn:hover,.lay-btn:hover{
+    background-color: #c61f49;
+}
+.flow-btn .i{
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 20px;
+    margin-top: -2px;
+    margin-right: 2px;
+    background-image: url(/images/tag/20140110112106_SeTRJ.png);
+    background-position: -80px 0;
+}
+.flow-btn-un .i{
+    background-image: url(/images/tag/20140119115053_QHAit.png);
+    background-position: -162px -2px;
+}
+.cursor{
+    cursor:pointer;
+}
+
+.cursor:hover{
+    color: #f46;
+}
+
+.nav-span{
+    width: 0px;
+    left: 236px;
+    opacity: 0;
+    top: 56px;
+    position: absolute;
+    height: 5px;
+    background-color: #5FB878;
+}
+
+.section .tab-nav{
+    width: 100%;
+    position: relative;
+    padding: 0 ;
+    background-color: #ccc;
+    color: #c2c2c2;
+    border-radius: 2px;
+    box-sizing: border-box!important;
+}
+
+.section .tab-nav .item{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 60px;
+    color: black;
+    float: left;
+    border: 1px solid red ;
+    width: 12rem;
+}

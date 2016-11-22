@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -13,21 +14,57 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \View
      */
     public function index($user_id=false, Request $request)
     {
-        if( !$user_id && !Auth::check()){
-            abort(404,"没有找到该用户");
+        if( !$user_id && !Auth::check())
+        {
+            abort(404,"没有用户依据");
         }
-        if( !$user_id || ( $user_id && e($user_id) == Auth::user()->id ) )
+        if( !$user_id || ( $user_id && e($user_id) == Auth::id() ) )
         {
             $this->IS_ME = true;
-            $user = Auth::user();
-        }else{
-            $user = User::find(e($user_id));
+            $user_id = Auth::id();
         }
-        dd($user);
+        if(!User::find($user_id))
+        {
+            abort(404,"没有该用户信息");
+        }
+        $buddy = UserRepository::getBuddyInfo($user_id);
+        $tab = UserRepository::getTabData($user_id);
+//        dump($buddy->toArray());
+        return view("web.buddy.index",[
+            "title" =>  $buddy->name . ' | 个人主页',
+            "buddy" =>  $buddy,
+            "IS_ME" =>  $this->IS_ME,
+            "tab"   =>  $tab,
+            "authFollowBuddy" => collect( array_where( Auth::user()->follow->toArray(),
+                                function($key,$value){
+                                    return $value['cover_user_id'] > 0;
+                                } ) )->pluck("cover_user_id")->toArray(),
+            "media"   => [
+                'js'  =>    [],
+                'css' =>    [
+                    '/css/buddy.css',
+                    '/css/new_index.css',
+                    '/css/image/lrtk.css',
+                ],
+            ]
+        ]);
+    }
+
+    /**
+     * @name        edit
+     * @DateTime    ${DATE}
+     * @param       \Illuminate\Http\Request.
+     * @return      \Illuminate\Support\Facades\View
+     * @version     1.0
+     * @author      < 18681032630@163.com >
+     */
+    public function edit()
+    {
+        return ;
     }
 
 }

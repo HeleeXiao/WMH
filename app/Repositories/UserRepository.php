@@ -42,6 +42,7 @@ class UserRepository{
             $user = User::firstOrCreate($data);
 
             if ($user) {
+
                 $files = \App\Models\File::where("state",0)->get()->pluck("id");
                 /*
                  * 创建用户详细信息
@@ -85,6 +86,89 @@ class UserRepository{
     public static function delete()
     {
 
+    }
+
+    /**
+     * @name        getTabData
+     * @DateTime    2016-11-21
+     * @param       \Illuminate\Http\Request.
+     * @return      Array
+     * @version     1.0
+     * @author      < 18681032630@163.com >
+     */
+    public static function getTabData($user_id)
+    {
+        $tab = [
+            [
+                "title" => "浏览记录",
+                "data"=>[],
+                "active"=>true,
+                "name"=>"browses",
+            ],
+            [
+                "title" => "关注",
+                "data"=>[],
+                "active"=>false,
+                "name"=>"follow_user",
+            ],
+            [
+                "title" => "粉丝",
+                "data"=>[],
+                "active"=>false,
+                "name"=>"fans",
+            ]
+        ];
+        if( auth()->id() == $user_id )
+        {
+            $tab[] = [
+                "title" => "消息",
+                "data"=>[],
+                "active"=>false,
+                "name" => 'message'
+            ];
+            $tab[] = [
+                "title" => "收藏",
+                "data"=>[],
+                "active"=>false,
+                "name"=>"follow_demand",
+            ];
+            $tab[] = [
+                "title" => "交易记录",
+                "data"=>[],
+                "active"=>false,
+                "name" => 'trade'
+            ];
+        }
+        return $tab;
+    }
+
+    public static function getBuddyInfo($user_id)
+    {
+        if(!$user_id)
+        {
+            return [];
+        }
+        return User::where("id",$user_id)->with(["content"=>function($content){
+            $content->with("head");
+        }])->with([
+            "follow"=>function($follow){
+                $follow->with(["idol"=>function($idol){
+                    $idol->with(['content'=>function($content){
+                        $content->with('head');
+                    }]);
+                },"demand"]);
+            },'fans'=>function($fans){
+                $fans->with(["user"=>function($user){
+                    $user->with(['content'=>function($content){
+                        $content->with('head');
+                    }]);
+                }]);
+            },'browse'=>function($browse){
+                $browse->where('demand_id','>',0)
+                    ->orderBy('created_at',"desc")
+                    ->with("demand");
+            }
+        ])->first();
     }
 
 }

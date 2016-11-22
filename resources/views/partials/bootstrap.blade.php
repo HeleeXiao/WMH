@@ -26,8 +26,8 @@
                         </a>
                     @else
                         <div id="nav_user"  onmouseover="$('.lanrenzhijia').show()">
-                            <a href="/yanzhico/" class="nav-link dm-nav">
-                                <img width="26" height="26" src="/images/user/default.jpg" >
+                            <a href="/buddy/{{Auth::user()->id}}" class="nav-link dm-nav">
+                                <img width="26" height="26" src="{{ url(Session::get("buddy.head")) }}" >
                                 <div class="arrow"></div>
                                 <div class="num hidden">0</div>
                             </a>

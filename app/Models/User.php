@@ -47,8 +47,33 @@ class User extends Model implements AuthenticatableContract,
         $this->attributes['password'] = bcrypt($value);
     }
 
+    /*
+     * 关联详细信息
+     */
     public function content()
     {
         return $this->hasOne(UserContent::class,"user_id");
+    }
+
+    /*
+     * 关联关注列表
+     */
+    public function follow()
+    {
+        return $this->hasMany(Follow::class,"user_id",'id');
+    }
+    /*
+     * 关联粉丝
+     */
+    public function fans()
+    {
+        return $this->hasMany(Follow::class,"cover_user_id",'id');
+    }
+    /*
+     * 关联浏览记录
+     */
+    public function browse()
+    {
+        return $this->hasMany(Browse::class,"user_id",'id');
     }
 }

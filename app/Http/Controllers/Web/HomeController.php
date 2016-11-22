@@ -100,6 +100,11 @@ class HomeController extends Controller
              * 激活登录事件  记录登录次数
              */
             Event::fire( new LoginEvent( Auth::user() ) );
+            $request->session()->put("buddy.head",User::where("id",Auth::id())
+                ->with(["content"=>function($content){
+                    $content->with("head");
+                }])
+                ->first()->content->head->path);
             return Redirect::intended("/");
         }
         $validator = Validator::make($request->all(), []);
@@ -116,9 +121,10 @@ class HomeController extends Controller
      * @version     1.0
      * @author      < 18681032630@163.com >
      */
-    public function getLogout()
+    public function getLogout(Request $request)
     {
         Auth::logout();
+        $request->session()->forget("buddy");
         return Redirect::to("/");
     }
 
@@ -174,6 +180,15 @@ class HomeController extends Controller
         if( $spit['status'] == 200 )//调用注册类
         {
             Auth::loginUsingId($spit['result']->id);
+            if( ! $request->session()->has("buddy.head") )
+            {
+
+                $request->session()->put("buddy.head",User::where("id",$spit['result']->id)
+                    ->with(["content"=>function($content){
+                        $content->with("head");
+                    }])
+                    ->first()->content->head->path);
+            }
             return Redirect::intended("/");
         }
         return back()->with("pageMsg","注册失败")->with("level","fail");

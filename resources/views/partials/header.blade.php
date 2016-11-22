@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('/assets/styles/bootstrap.'.Config::get('theme.name', 'default').'.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/layui/css/layui.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/common.css') }}">
 
 
 <script src="{{ asset('/js/jquery.js?t=1476958143') }}"></script>

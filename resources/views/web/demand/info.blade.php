@@ -125,7 +125,6 @@
                 </li>
             @endforeach
         </ul>
-
     </div>
 
     <div id="discus-form">
@@ -145,7 +144,7 @@
                         <button class="layui-btn" lay-submit lay-filter="formDiscus">立即提交</button>
                     @else
                         <button class="layui-btn"
-                            onclick="layer.confirm('登录了才能评论，现在立刻去登录吧？', {
+                            onclick="layer.confirm('登录了才能评论，现在去登录吧？', {
                               btn: ['现在就去','不评论了'] //按钮
                             }, function(){
                               window.location.href='/{{config("app.version")."login"}}';
@@ -180,37 +179,37 @@
                 }
                 var index = layer.load();
                 $.get(
-                        "{{ route("demand.postSubmitDiscus") }}",
-                        data.field,
-                        function(res){
-                            layer.close(index);
-                            if(res.status !== 200 )
-                            {
-                                layer.alert(res.message, {
-                                    icon: 2,
-                                    shadeClose: true,
-                                    title: "错误"
-                                });
-                                return false;
-                            }
-                            var html = '\<li>'+
-                                            '\<a class="avatar" href="/buddy/'+ res.result.user_id +'">'+
-                                                '\<img src="{{(Auth::check() ? Auth::user()->content[0]->head->path : '')}}" width="36" height="36">'+
-                                            '\</a>'+
-                                            '\<div class="userinfo">'+
-                                                '\<a class="name" href="{{url("buddy/". (Auth::check() ? Auth::user()->id : 0) )}}" title="{{ (Auth::check() ? Auth::user()->name : '') }}">'+
-                                                        "{{ Auth::check() ? Auth::user()->name : '' }}"+
-                                                '\</a>'+
-                                                '\<i class="uptime">'+ res.result.created_at +'\</i>'+
-                                                '\<div class="userinfo-action">'+
-                                                    '\<span>'+ res.result.content +'</span>'+
-                                                '\</div>'+
-                                            '\</div>'+
-                                        '\</li>';
-                                $(".discuss ul").prepend(html);
-                            layer.msg("评论成功");
+                    "{{ route("demand.postSubmitDiscus") }}",
+                    data.field,
+                    function(res){
+                        layer.close(index);
+                        if(res.status !== 200 )
+                        {
+                            layer.alert(res.message, {
+                                icon: 2,
+                                shadeClose: true,
+                                title: "错误"
+                            });
                             return false;
                         }
+                        var html = '\<li>'+
+                            '\<a class="avatar" href="/buddy/'+ res.result.user_id +'">'+
+                                '\<img src="{{(Auth::check() ? Auth::user()->content[0]->head->path : '')}}" width="36" height="36">'+
+                            '\</a>'+
+                            '\<div class="userinfo">'+
+                                '\<a class="name" href="{{url("buddy/". (Auth::check() ? Auth::user()->id : 0) )}}" title="{{ (Auth::check() ? Auth::user()->name : '') }}">'+
+                                        "{{ Auth::check() ? Auth::user()->name : '' }}"+
+                                '\</a>'+
+                                '\<i class="uptime">'+ res.result.created_at +'\</i>'+
+                                '\<div class="userinfo-action">'+
+                                    '\<span>'+ res.result.content +'</span>'+
+                                '\</div>'+
+                            '\</div>'+
+                        '\</li>';
+                        $(".discuss ul").prepend(html);
+                        layer.msg("评论成功");
+                        return false;
+                    }
                 );
                 return false;
             });

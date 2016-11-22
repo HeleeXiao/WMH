@@ -18,8 +18,8 @@ class UserContent extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'sex', 'age','country','address', 'state',
-        'province', 'city', 'education','major',
+        'user_id', 'file_id', 'sex', 'age','country','address',
+        'state', 'province', 'city', 'education','major',
     ];
 
     /**

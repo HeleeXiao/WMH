@@ -14,16 +14,16 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call(FilesTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(DemandsTableSeeder::class);
-        $this->call(BrowsesTableSeeder::class);
-        $this->call(TagsTableSeeder::class);
-        $this->call(DiscussTableSeeder::class);
-        $this->call(TagUsersTableSeeder::class);
-        $this->call(FollowsTableSeeder::class);
-        $this->call(TagDemandsTableSeeder::class);
-        $this->call(FileDemandsTableSeeder::class);
+        $this->call( FilesTableSeeder::class );
+        $this->call( UsersTableSeeder::class );
+        $this->call( DemandsTableSeeder::class );
+        $this->call( TagsTableSeeder::class );
+        $this->call( BrowsesTableSeeder::class );
+        $this->call( DiscussTableSeeder::class );
+        $this->call( TagUsersTableSeeder::class );
+        $this->call( FollowsTableSeeder::class );
+        $this->call( TagDemandsTableSeeder::class );
+        $this->call( FileDemandsTableSeeder::class );
 
         Model::reguard();
     }
