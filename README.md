@@ -26,6 +26,13 @@ php artisan db:seed
 
 php artisan migrate:refresh
 
+php artisan db:seed
+
+#update : 2016-11-22 18:16
+
+php artisan migrate:refresh
 
 php artisan db:seed
+
+个人中心上线
 
