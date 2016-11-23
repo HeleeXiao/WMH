@@ -47,7 +47,7 @@ class DemandController extends Controller
         return view("web.demand.info",[
             "title"   => $demand->title,
             "demand"  => $demand,
-            "demand_id"  => $id,
+            "demand_id" => $id,
             "media"   => [
                 'js'  =>    [
                 ],
