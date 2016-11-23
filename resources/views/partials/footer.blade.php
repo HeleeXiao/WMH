@@ -1,11 +1,11 @@
 
 </div>
 </div>
-<div id="footer" style="margin-top: 3rem;">
+<div id="footer" >
 
     <div class="container hidden-xs">
         <div class="row">
-            <div class="col-xs-8">
+            <div class="col-xs-8" style="margin-top: 3rem;">
                 <p class="text-muted credit" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">
                     &copy; <a href="/">wmh</a> 2016. All rights reserved.
                 </p>

@@ -1,3 +1,12 @@
+html,body,*{
+    margin: 0 auto;
+}
+body{
+    background: #f4f4f4;
+}
+.container{
+    background: #fff;
+}
 .user-content-header{
     /*margin-top: 4rem;*/
     width:100% ;
@@ -69,4 +78,9 @@
     transition: all .2s;
     -webkit-transition: all .2s;
 }
-
+.layui-this{
+    border-bottom:5px solid #F45D68;
+}
+.layui-tab-title li {
+    vertical-align: baseline;
+}
