@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Cache;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
@@ -35,6 +36,7 @@ class HomeController extends Controller
      */
     public function getIndex()
     {
+        Cache::put('AAA',456,10);
         $this->media = [
             'js'  =>    [
                 '/layer/layui.js',
