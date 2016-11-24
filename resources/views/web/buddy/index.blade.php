@@ -48,13 +48,21 @@
                     @else
                         <span class="buddy-tag">收藏
                     @endif
-                        <b class="buddy-tag-collection">6 </b>
+                        <b class="buddy-tag-collection">
+                            {{ count(array_where($buddy->follow->toArray(),function($key,$value){
+                                return $value['demand_id'] > 0;
+                            })) }}
+                        </b>
                     </span>
                     <span class="buddy-tag cursor" data-nav="follow_user">关注
-                        <b class="buddy-tag-follow">33 </b>
+                        <b class="buddy-tag-follow">
+                            {{ count(array_where($buddy->follow->toArray(),function($key,$value){
+                                return $value['cover_user_id'] > 0;
+                            })) }}
+                        </b>
                     </span>
                     <span class="buddy-tag cursor" data-nav="fans">粉丝
-                        <b class="buddy-tag-fans"> 12</b>
+                        <b class="buddy-tag-fans" id="followBuddyCount"> {{ $buddy->fans->count() }}</b>
                     </span>
                     @if($IS_ME === true)
                         <span class="buddy-tag cursor" data-nav="follow_demand" >交易
@@ -73,11 +81,17 @@
                         </a>
                     @else
                         @if( ! in_array($buddy->id,$authFollowBuddy) )
-                            <a title="收藏" class="flow-btn" href="javascript:;">
+                            <a title="收藏" class="flow-btn follow-ajax"
+                               data-user="{{Auth::id()}}"
+                               data-value="{{ $buddy->id }}" data-field="cover_user"
+                               href="javascript:;">
                                 <i class="i"></i><span>关注</span>
                             </a>
                         @else
-                            <a title="收藏" class="flow-btn" href="javascript:;">
+                            <a title="收藏" class="flow-btn follow-ajax"
+                               data-user="{{Auth::id()}}"
+                               data-value="{{ $buddy->id }}" data-field="cover_user"
+                               href="javascript:;">
                                 <i class="layui-icon" style="margin-left: -7px;">&#xe618;</i><span>已关注</span>
                             </a>
                         @endif
@@ -148,8 +162,7 @@
                 @endif
                 @if(str_is( 'browses', $value['name'] ))
                     @foreach($buddy->browse as $key => $p_demand)
-                        @if( ABS(( $key+1) % 3 ) == 1 )
-                            <div class="recommend-hidebox pl-right">
+                        <div class="demand recommend-hidebox pl-right">
                                 <div class="recommend-imgbox recommend-box">
                                     <a href="{{url("s/show/".$p_demand->demand->id)}}">
                                         <img lay-src="{{url($p_demand->demand->cover->path)}}"
@@ -157,8 +170,6 @@
                                     </a>
                                 </div>
                                 <div class="recommend-infobox board recommend-box big">
-                                    <div class="recommend-data board">
-                                    </div>
                                     <h2>
                                         <a href="{{url("s/show/".$p_demand->demand->id)}}">
                                             {{ $p_demand->demand->title }}
@@ -178,62 +189,44 @@
                                             {{ @$p_demand->demand->user->name }}
                                         </a>
                                     </span>
-                                    <div class="info-tra-left big">
-                                    </div>
                                 </div>
                             </div>
-                        @elseif( ABS(( $key+1) % 3 ) == 2 )
-                            <div class="recommend-box">
-                                <div class="recommend-infobox board small">
-                                    <div class="recommend-data board">
-                                    </div>
-                                    <h2>
-                                        <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                            {{ $p_demand->demand->title }}
-                                        </a>
-                                    </h2>
-                                    <p>
-                                    <span>
-                                        121 赞许
-                                    </span>
-                                    <span>
-                                        {{ $p_demand->demand->discus->count() }} 评论
-                                    </span>
-                                                        </p>
-                                <span>
-                                    来自
-                                    <a href="{{url("buddy/".@$p_demand->demand->user->id)}}" rel="nofollow">
-                                        {{ @$p_demand->demand->user->name }}
-                                    </a>
-                                </span>
-                                </div>
-                                <div class="info-tra-left">
-                                </div>
-                                <div class="recommend-infobox board small pl-right">
-                                    <div class="recommend-data board">
-                                    </div>
-                                    <h2>
-                                        <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                            {{ $p_demand->demand->name }}
-                                        </a>
-                                    </h2>
-                                    <p>
-                                    </p>
-                                </div>
-                                <div class="info-tra-right">
-                                </div>
-                            </div>
-                        @elseif( ABS(( $key+1) % 3 ) == 0 )
-                            <div class="recommend-imgbox recommend-box">
-                                <a href="{{url("s/show/".$p_demand->demand->id)}}">
-                                    <img lay-src="{{url($p_demand->demand->cover->path)}}">
-                                </a>
-                            </div>
-                        @endif
                     @endforeach
                 @endif
                 @if(str_is( 'follow_demand', $value['name'] ))
-                    TODO 收藏列
+                    @foreach($buddy->follow as $value)
+                        @if($value->demand != null)
+                                <div class="demand recommend-hidebox pl-right">
+                                    <div class="recommend-imgbox recommend-box">
+                                        <a href="{{url("s/show/".$value->demand->id)}}">
+                                            <img lay-src="{{url(@$value->demand->cover->path)}}"
+                                                 data-baiduimageplus-ignore="1">
+                                        </a>
+                                    </div>
+                                    <div class="recommend-infobox board recommend-box big">
+                                        <h2>
+                                            <a href="{{url("s/show/".$value->demand->id)}}">
+                                                {{ $value->demand->title }}
+                                            </a>
+                                        </h2>
+                                        <p>
+                                        <span>
+                                            121 赞许
+                                        </span>
+                                        <span>
+                                            {{ $value->demand->discus->count() }} 评论
+                                        </span>
+                                        </p>
+                                    <span>
+                                        来自
+                                        <a href="{{url("buddy/".$value->demand->user->id)}}" rel="nofollow">
+                                            {{ @$value->demand->user->name }}
+                                        </a>
+                                    </span>
+                                    </div>
+                                </div>
+                        @endif
+                    @endforeach
                 @endif
                 @if(str_is( 'trade', $value['name'] ))
                     TODO 交易列
@@ -253,6 +246,28 @@
 @stop
 @section('bottom')
     <script>
+        /*
+         * 关注事件
+         */
+        $(function(){
+            Common.follow_url = "{{url('api/follow')}}";
+            Common._token = "{{ csrf_token() }}";
+            $(".follow-ajax").on('click',function(){
+                var obj = $(this);
+                Common.follow( $(this).data('user'), $(this).data('field'), $(this).data('value'),
+                        function(){
+                            var html = '\<i class="layui-icon" style="margin-left: -7px;">&#xe618;</i><span>已关注</span>';
+                            $(obj).html(html);
+                            $("#followBuddyCount").text(parseInt($("#followBuddyCount").text())+1);
+                        },
+                        function(){
+                            var html = '\<i class="i"></i><span>关注</span>';
+                            $(obj).html(html);
+                            $("#followBuddyCount").text(parseInt($("#followBuddyCount").text())-1);
+                        }
+                );
+            })
+        });
         layui.use('element', function(){
             var element = layui.element();
 

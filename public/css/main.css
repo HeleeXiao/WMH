@@ -56,7 +56,8 @@ legend {
 body {
 	font-family:"helvetica neue",arial,sans-serif;
 	font-size:14px;
-	color:#444
+	color:#444;
+	background: #f5f5f5;
 }
 table {
 	font-size:inherit
@@ -2487,7 +2488,9 @@ a.remove_activity_rec:hover,a.remove_activity_invite:hover {
 	height:48px;
 	z-index:99997;
 	background:#fff;
-	box-shadow:0 0 4px rgba(0,0,0,.2)
+	box-shadow:0 0 4px rgba(0,0,0,.2);
+	/*border-bottom: 1px solid;*/
+	/*border-image: linear-gradient(to right, #22beff, #ff4c13) 30 30;*/
 }
 .header-item {
 	position:relative;
@@ -2567,16 +2570,25 @@ a.remove_activity_rec:hover,a.remove_activity_invite:hover {
 }
 #nav_user {
 	float:left;
-	border-right:1px solid #f5f5f5;
-	width:46px;
-	cursor:pointer
+	width:100%;
+	cursor:pointer;
 }
 .menu-bar .nav-link {
-	display:block;
+	/*display:block;*/
 	height:48px;
+	width: 100%;
 	line-height:48px;
-	position:relative;
-	text-align:center
+	/*position:relative;*/
+	/*text-align:center*/
+}
+.nav-link img{
+	border: 1px solid #fff;
+	border-radius:50%;
+	width: 42px;
+	height: 42px;
+}
+.name{
+	font-size: 13px;
 }
 .menu-bar .arrow {
 	/*background:url(/img/menu_sprite.svg?20150302) 0 -50px no-repeat;*/

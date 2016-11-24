@@ -53,25 +53,9 @@
                     <div class="swiper-button-prev"></div>
                 </div>
                 <td>
-
-                    {{--<p class="album-info">--}}
-                        {{--<span class="album-count"> {{ $demand->file->count() }}张图片 </span>--}}
-                        {{--&nbsp;<b>·</b>&nbsp;--}}
-                        {{--<span class="like-count"><i>10</i>人关注</span>--}}
-                    {{--</p>--}}
                     <p class="album-desc"></p>
                 </td>
             </tr>
-
-    <!--             <td>
-        <h1 class="album-title">{{ $demand->title }}</h1>
-        <p class="album-info">
-            <span class="album-count">{{ $demand->file->count() }}张图片</span>
-            &nbsp;<b>·</b>&nbsp;<span class="like-count"><i>{{ $demand->follow->count() }}</i>人关注</span></p>
-        <p class="album-desc">
-        </p>
-    </td>
-                </tr> -->
 
             </tbody>
         </table>
@@ -87,16 +71,23 @@
                 <p class="album-info">
                   <span class="album-count"> {{ $demand->file->count() }}张图片 </span>
                   &nbsp;<b>·</b>&nbsp;
-                  <span class="like-count"><i>10</i>人关注</span>
+                  <span class="like-count"><i id="followBuddyCount">{{ $followThisDemandAtBuddy }}</i>人关注</span>
                 </p>
 
             </div>
 
             <div class="album-action dib">
-                <a title="收藏" class="albumcollectbtn" href="javascript:;" ><i></i><span>收藏</span></a>
-                <a title="赞" class="albumlikebtn "  href="javascript:;"><i></i><span>赞</span></a>
+                <a title="收藏" class="albumcollectbtn follow-ajax" data-user="{{Auth::id()}}"
+                   data-value="{{ $demand->id }}" data-field="demand" href="javascript:;" >
+                    @if( ! in_array($demand->id , $authFollowDemand))
+                        <i class="i"></i><span>收藏</span>
+                    @else
+                        <i class="layui-icon" style="margin-left: -7px;">&#xe618;</i><span>已收藏</span>
+                    @endif
+                </a>
+                {{--<a title="赞" class="albumlikebtn "  href="javascript:;"><i></i><span>赞</span></a>--}}
 
-                <div id="album-share" class="album-share" href="javascript:;">
+                <div id="album-share" onclick="$CKE.over()" class="album-share" href="javascript:;">
                     <i></i>
                 </div>
             </div>
@@ -161,7 +152,34 @@
 </div>
 @stop
 @section('bottom')
+        <!-- JiaThis Button BEGIN -->
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jiathis_r.js?move=0&amp;btn=r4.gif" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
     <script>
+        /*
+         * 收藏事件
+         */
+        $(function(){
+            Common.follow_url = "{{url('api/follow')}}";
+            Common._token = "{{ csrf_token() }}";
+            $(".follow-ajax").on('click',function(){
+                var obj = $(this);
+                Common.follow( $(this).data('user'), $(this).data('field'), $(this).data('value'),
+                        function(){
+                            var html = '\<i class="layui-icon" style="margin-left: -7px;">&#xe618;</i>'+
+                                    '\<span>已收藏</span>';
+                            $(obj).html(html);
+                            $("#followBuddyCount").text(parseInt($("#followBuddyCount").text())+1);
+                        },
+                        function(){
+                            var html = '\<i class="i"></i>'+
+                                    '\<span>收藏</span>';
+                            $(obj).html(html);
+                            $("#followBuddyCount").text(parseInt($("#followBuddyCount").text())-1);
+                        }
+                );
+            })
+        })
         layui.use('form', function(){
             var form = layui.form();
 
@@ -170,7 +188,7 @@
 //                layer.msg(JSON.stringify(data.field));return false;
                 if( $(".layui-textarea").val() == "" )
                 {
-                    layer.alert("请填写你要评论的话", {
+                    layer.alert("请填写评语", {
                         icon: 5,
                         shadeClose: true,
                         title: "错误"

@@ -25,25 +25,25 @@
                             <span class="text"> 登录</span>
                         </a>
                     @else
-                        <div id="nav_user"  onmouseover="$('.lanrenzhijia').show()">
+                        <div id="nav_user">
                             <a href="/buddy/{{Auth::user()->id}}" class="nav-link dm-nav">
-                                <img width="26" height="26" src="{{ url(Session::get("buddy.head")) }}" >
+                                <img src="{{ url(Session::get("buddy.head")) }}" >
                                 <div class="arrow"></div>
                                 <div class="num hidden">0</div>
                             </a>
+                            <span class="name">{{ Auth::user()->name }}</span>
                         </div>
-                        {{ Auth::user()->name }}
                     @endif
                 </div>
-                <div class="lanrenzhijia" style="display: none" >
-                    <ul>
-                        <li class="on"><a href='javascript:void(0);'>用户中心</a></li>
-                        <li><a href='javascript:void(0);'>账号设置</a></li>
-                        <li><a href='javascript:void(0);'>我关注的</a></li>
-                        <li><a href='{{ url("/". config("app.version") ."logout") }}'>退出</a></li>
-                    </ul>
-                    <div class="hover"></div>
-                </div>
+                {{--<div class="lanrenzhijia" style="display: none" >--}}
+                    {{--<ul>--}}
+                        {{--<li class="on"><a href='javascript:void(0);'>用户中心</a></li>--}}
+                        {{--<li><a href='javascript:void(0);'>账号设置</a></li>--}}
+                        {{--<li><a href='javascript:void(0);'>我关注的</a></li>--}}
+                        {{--<li><a href='{{ url("/". config("app.version") ."logout") }}'>退出</a></li>--}}
+                    {{--</ul>--}}
+                    {{--<div class="hover"></div>--}}
+                {{--</div>--}}
 
             </div>
             <form id="search_form" method="get" action="/{{ config("app.version") }}search/" class="searching-unit" data-regestered="regestered">

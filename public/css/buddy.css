@@ -1,6 +1,4 @@
-html,body,*{
-    margin: 0 auto;
-}
+
 body{
     background: #f4f4f4;
 }
@@ -79,7 +77,10 @@ body{
     -webkit-transition: all .2s;
 }
 .layui-this{
-    border-bottom:5px solid #F45D68;
+    border-bottom:5px solid ;
+    /*border-image: -webkit-linear-gradient( #6ffcff, #ff6b6f) 30 30;*/
+    /*border-image: -moz-linear-gradient( red, #4dffdb) 30 30;*/
+    border-image: linear-gradient(to right, #ff6f13, #39ddff) 30 30;
 }
 .layui-tab-title li {
     vertical-align: baseline;

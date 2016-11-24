@@ -44,41 +44,41 @@
     <div id="recommend_container" class="recommend-container" style="margin:0 auto;padding: 0 0 0 0;width: 92.8%;">
             @foreach($demands as $key => $demand)
                 @if( ABS(( $key+1) % 3 ) == 1 )
-                    <div class="recommend-hidebox pl-right">
-                    <div class="recommend-imgbox recommend-box">
-                        <a href="{{url("s/show/".$demand->id)}}">
-                            <img lay-src="{{url($demand->cover->path)}}"
-                                 data-baiduimageplus-ignore="1">
-                        </a>
-                    </div>
-                    <div class="recommend-infobox board recommend-box big">
-                        <div class="recommend-data board">
-                        </div>
-                        <h2>
+                    <div class="demand recommend-hidebox pl-right">
+                        <div class="recommend-imgbox recommend-box">
                             <a href="{{url("s/show/".$demand->id)}}">
-                                {{ $demand->title }}
+                                <img lay-src="{{url($demand->cover->path)}}"
+                                     data-baiduimageplus-ignore="1">
                             </a>
-                        </h2>
-                        <p>
-                        <span>
-                            121 赞许
-                        </span>
-                        <span>
-                            {{ $demand->discus->count() }} 评论
-                        </span>
-                        </p>
-                    <span>
-                        来自
-                        <a href="{{url("buddy/".$demand->user->id)}}" rel="nofollow">
-                            {{ @$demand->user->name }}
-                        </a>
-                    </span>
-                        <div class="info-tra-left big">
+                        </div>
+                        <div class="recommend-infobox board recommend-box big">
+                            <div class="recommend-data board">
+                            </div>
+                            <h2>
+                                <a href="{{url("s/show/".$demand->id)}}">
+                                    {{ $demand->title }}
+                                </a>
+                            </h2>
+                            <p>
+                                <span>
+                                    121 赞许
+                                </span>
+                                <span>
+                                    {{ $demand->discus->count() }} 评论
+                                </span>
+                            </p>
+                            <span>
+                                来自
+                                <a href="{{url("buddy/".$demand->user->id)}}" rel="nofollow">
+                                    {{ @$demand->user->name }}
+                                </a>
+                            </span>
+                            <div class="info-tra-left big">
+                            </div>
                         </div>
                     </div>
-                </div>
                 @elseif( ABS(( $key+1) % 3 ) == 2 )
-                    <div class="recommend-box">
+                    <div class="demand recommend-box">
                     <div class="recommend-infobox board small">
                         <div class="recommend-data board">
                         </div>
@@ -119,7 +119,7 @@
                     {{--</div>--}}
                 </div>
                 @elseif( ABS(( $key+1) % 3 ) == 0 )
-                    <div class="recommend-imgbox recommend-box">
+                    <div class="demand recommend-imgbox recommend-box">
                         <a href="{{url("s/show/".$demand->id)}}">
                             <img lay-src="{{url($demand->cover->path)}}">
                         </a>
@@ -152,7 +152,7 @@
                         $.get('{{ route("demand.getHomeDataJson") }}?page='+page, function(res){
                             layui.each(res, function(index, item){
                                 if( Math.abs(( index+1) % 3 ) == 1 ) {
-                                    html = '\<div class="recommend-hidebox pl-right" >'+
+                                    html = '\<div class="demand recommend-hidebox pl-right" >'+
                                                 '\<div class="recommend-imgbox recommend-box" >'+
                                                     '<a href="/s/show/'+item.id+'" >'+
                                                         '<img lay-src="'+item.cover.path+'">'+
@@ -173,13 +173,13 @@
                                                         '<\/a>'+
                                                     '<\/span >'+
                                                 '\<div class="info-tra-left big" >'+
-                                            '<\/div>'+
+                                                '<\/div>'+
                                         '<\/div>'+
                                     '<\/div>';
 
                                 }else if(Math.abs(( index + 1) % 3) == 2) {
 
-                                    html = '\<div class="recommend-box">' +
+                                    html = '\<div class="demand recommend-box">' +
                                                 '\<div class="recommend-infobox board small">' +
                                                     '\<div class="recommend-data board">' +
                                                     '<\/div>' +
@@ -216,7 +216,7 @@
                                             '\</div >' ;
                                 }else if(Math.abs(( index + 1) % 3) == 0)
                                 {
-                                    html = '\<div class="recommend-imgbox recommend-box">'+
+                                    html = '\<div class="demand recommend-imgbox recommend-box">'+
                                                 '<a href="/s/show/' + item.id + '">'+
                                                     '<img lay-src="'+item.cover.path+'" >'+
                                                 '\</a>'+

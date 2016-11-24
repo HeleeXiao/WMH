@@ -1603,8 +1603,8 @@ img.album-header-bg {
 	
 }
 
-.albumcollectbtn:link i,
-.albumcollectbtn:visited i {
+.albumcollectbtn:link .i,
+.albumcollectbtn:visited .i {
 	display: inline-block;
 	vertical-align: middle;
 	width: 24px;
@@ -1631,7 +1631,7 @@ img.album-header-bg {
 	background-color: #e03c5a
 }
 
-.albumlikebtn i {
+.albumlikebtn .i {
 	background-image: url(/images/tag/20140526133240_RmVVc.png);
 	background-position: -6px -3px;
 	display: inline-block;

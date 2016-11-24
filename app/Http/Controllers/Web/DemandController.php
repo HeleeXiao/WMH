@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Models\Demand;
 
+use App\Models\Follow;
 use App\Models\UserContent;
 use Request;
 use Auth;
@@ -48,6 +49,11 @@ class DemandController extends Controller
             "title"   => $demand->title,
             "demand"  => $demand,
             "demand_id" => $id,
+            "authFollowDemand" => Auth::check() ? collect( array_where( Auth::user()->follow->toArray(),
+                function($key,$value){
+                    return $value['demand_id'] > 0 && $value['state'] == 0;
+                } ) )->pluck("demand_id")->toArray() : [],
+            "followThisDemandAtBuddy" => Follow::where('demand_id',$id)->where('state',0)->count(),
             "media"   => [
                 'js'  =>    [
                 ],

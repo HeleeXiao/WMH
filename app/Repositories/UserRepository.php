@@ -118,7 +118,7 @@ class UserRepository{
                 "data"=>[],
                 "active"=>false,
                 "name"=>"fans",
-                "icon" => "&#xe60c;",
+                "icon" => "&#xe650;",
             ]
         ];
         if( auth()->id() == $user_id )
@@ -142,6 +142,13 @@ class UserRepository{
                 "data"=>[],
                 "active"=>false,
                 "name" => 'message',
+                "icon" => "&#xe63a;",
+            ];
+            $tab[] = [
+                "title" => "资料",
+                "data"=>[],
+                "active"=>false,
+                "name" => 'data',
                 "icon" => "&#xe63a;",
             ];
             $tab[] = [
@@ -169,7 +176,7 @@ class UserRepository{
                     $idol->with(['content'=>function($content){
                         $content->with('head');
                     }]);
-                },"demand"]);
+                },"demand"])->where("state",0);
             },'fans'=>function($fans){
                 $fans->with(["user"=>function($user){
                     $user->with(['content'=>function($content){
@@ -179,6 +186,7 @@ class UserRepository{
             },'browse'=>function($browse){
                 $browse->where('demand_id','>',0)
                     ->orderBy('created_at',"desc")
+                    ->groupBy("demand_id")
                     ->with("demand");
             }
         ])->first();

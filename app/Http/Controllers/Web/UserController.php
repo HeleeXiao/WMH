@@ -33,7 +33,6 @@ class UserController extends Controller
         }
         $buddy = UserRepository::getBuddyInfo($user_id);
         $tab = UserRepository::getTabData($user_id);
-//        dump($buddy->toArray());
         return view("web.buddy.index",[
             "title" =>  $buddy->name . ' | 个人主页',
             "buddy" =>  $buddy,
@@ -41,14 +40,14 @@ class UserController extends Controller
             "tab"   =>  $tab,
             "authFollowBuddy" => collect( array_where( Auth::user()->follow->toArray(),
                                 function($key,$value){
-                                    return $value['cover_user_id'] > 0;
+                                    return $value['cover_user_id'] > 0 && $value['state'] == 0;
                                 } ) )->pluck("cover_user_id")->toArray(),
             "media"   => [
                 'js'  =>    [],
                 'css' =>    [
                     '/css/buddy.css',
-                    '/css/new_index.css',
                     '/css/image/lrtk.css',
+                    '/css/new_index.css',
                 ],
             ]
         ]);

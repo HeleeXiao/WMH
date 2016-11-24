@@ -40,8 +40,8 @@ class HomeController extends Controller
                 '/layer/layui.js',
             ],
             'css'  =>    [
-                '/css/new_index.css',
                 '/layer/skin/layui.css',
+                '/css/new_index.css',
             ],
         ];
 
