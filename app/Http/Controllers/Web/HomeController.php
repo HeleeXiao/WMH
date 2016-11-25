@@ -36,7 +36,6 @@ class HomeController extends Controller
      */
     public function getIndex()
     {
-        Cache::put('AAA',456,10);
         $this->media = [
             'js'  =>    [
                 '/layer/layui.js',

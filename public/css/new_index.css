@@ -758,5 +758,6 @@
 .lanrenzhijia .hover{ width:8em; height:40px; position:absolute; left:5px; top:10px; background:#F8F8F8; border-left:3px solid #FF5F3E; z-index:1;}
 .demand{
 	width: 24%;
-	margin-left: 5px;
+	margin-left: 3px;
+	margin-bottom: 3px;
 }
