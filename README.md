@@ -11,7 +11,6 @@ composer dump-autoload
 composer update
 
 php artisan vendor:publish
-<<<<<<< HEAD
 
 php artisan migrate
 
