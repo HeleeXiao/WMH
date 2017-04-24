@@ -41,7 +41,8 @@
 
     <div class="recommend-line"><a>为您推荐</a></div>
 
-    <div id="recommend_container" class="recommend-container" style="margin:0 auto;padding: 0 0 0 0;width: 92.8%;">
+    <div id="recommend_container" class="recommend-container"
+         style="margin:0 auto;padding: 0 0 0 0;width: 92.8%;">
             @foreach($demands as $key => $demand)
                 @if( ABS(( $key+1) % 3 ) == 1 )
                     <div class="demand recommend-hidebox pl-right">
